@@ -690,6 +690,42 @@
       max-width: 600px;
       margin: 0 auto;
     }
+
+     /* Additional Skills */
+        .additional-skills {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .additional-skills h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .additional-skill {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .additional-skill:hover {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
     
     /* UPDATED: Responsive design - removed side-by-side grid references */
     @media (max-width: 768px) {
@@ -1420,12 +1456,21 @@
             </div>
           </div>
 
-          <div class="skill-item">
-            <strong>Data Analysis</strong>
-            <div class="skill-bar">
-              <div class="skill-progress" style="width:25%;"></div>
+
+                      <!-- Additional Technical Skills -->
+            <div class="additional-skills">
+                <h3>Tools & Technologies</h3>
+                <div class="skills-list">
+                    <span class="additional-skill">Visual Studio Code</span>
+                    <span class="additional-skill">SQL Server Management</span>
+                    <span class="additional-skill">Microsoft Office Suite</span>
+                    <span class="additional-skill">Microsoft Visio</span>
+                    <span class="additional-skill">Data Analysis</span>
+                    <span class="additional-skill">Tkinter (GUI Development)</span>
+                    <span class="additional-skill">Basic Networking</span>
+                </div>
             </div>
-          </div>
+        </div>
 
                 <!-- ENHANCED: Soft Skills Section with new card-based design -->
       <div class="soft-skills-container">
