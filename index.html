@@ -1456,8 +1456,7 @@
             </div>
           </div>
 
-
-                      <!-- Additional Technical Skills -->
+          <!-- Additional Technical Skills -->
             <div class="additional-skills">
                 <h3>Tools & Technologies</h3>
                 <div class="skills-list">
@@ -1688,85 +1687,87 @@
     
   </div>
 </div>
-
+           
     <!-- Dropdown: Secondary Education -->
     <div class="dropdown-header" onclick="toggleDropdown('dropdown_secondary_education', this)">
       <span>Secondary Education</span>
       <span class="expand-icon">+</span>
     </div>
     <div id="dropdown_secondary_education" class="dropdown-content">
+        <div class="education-section"> 
+            <h4>AHGM Issac State Secondary School</h4>
+            
+            <div class="year-section">
+              <h5>Higher School Certificate (HSC) - A Level (2023)</h5>
+              
+              <div class="grade-card">
+                <div class="subject-name">Computer Science</div>
+                <div class="grade-badge grade-b">Grade: A*</div>
+              </div>
 
-      <!-- A-Level Dropdown -->
-      <div class="dropdown-header" onclick="toggleDropdown('dropdown_a_level', this)">
-        <span>A Level (HSC - 2023)</span>
-        <span class="expand-icon">+</span>
-      </div>
-      <div id="dropdown_a_level" class="dropdown-content">
-        <div class="grade-card">
-          <div class="subject-name">Computer Science (Advanced Level)</div>
-          <div class="grade-badge grade-a-star">Grade: A*</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Physics (Advanced Level)</div>
-          <div class="grade-badge grade-b">Grade: B</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Mathematics (Advanced Level)</div>
-          <div class="grade-badge grade-c">Grade: C</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">French (Advanced Subsidiary)</div>
-          <div class="grade-badge grade-lower">Grade: a</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">General Paper (Advanced Subsidiary)</div>
-          <div class="grade-badge grade-lower">Grade: d</div>
-        </div>
-      </div>
+              <div class="grade-card">
+                <div class="subject-name">Physics</div>
+                <div class="grade-badge grade-b">Grade: B</div>
+              </div>
 
-      <!-- O-Level Dropdown -->
-      <div class="dropdown-header" onclick="toggleDropdown('dropdown_o_level', this)">
-        <span>O Level (SC - 2021)</span>
-        <span class="expand-icon">+</span>
-      </div>
-      <div id="dropdown_o_level" class="dropdown-content">
-        <div class="grade-card">
-          <div class="subject-name">Computer Science</div>
-          <div class="grade-badge grade-a-star">Grade: A*</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Mathematics</div>
-          <div class="grade-badge grade-a-star">Grade: A*</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Additional Mathematics</div>
-          <div class="grade-badge grade-a">Grade: A</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Chemistry</div>
-          <div class="grade-badge grade-a">Grade: A</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Physics</div>
-          <div class="grade-badge grade-a">Grade: A</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">Travel and Tourism</div>
-          <div class="grade-badge grade-a">Grade: A</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">English Language</div>
-          <div class="grade-badge grade-b">Grade: B</div>
-        </div>
-        <div class="grade-card">
-          <div class="subject-name">French</div>
-          <div class="grade-badge grade-b">Grade: B</div>
-        </div>
-      </div>
+              <div class="grade-card">
+                <div class="subject-name">Mathematics</div>
+                <div class="grade-badge grade-b">Grade: C</div>
+              </div>
+
+              <div class="grade-card">
+                <div class="subject-name">French (Advanced Subsidiary)</div>
+                <div class="grade-badge grade-b">Grade: a</div>
+              </div>
+
+              <div class="grade-card">
+                <div class="subject-name">General Paper (Advanced Subsidiary)</div>
+                <div class="grade-badge grade-b">Grade: d</div>
+              </div>
+
+            </div>
+
+            <div class="year-section">
+              <h5>School Certificate (SC) - O Level (2021)</h5>
+              
+              <div class="grade-card">
+                <div class="subject-name">Computer Science</div>
+                <div class="grade-badge grade-b">Grade: A*</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">Mathematics</div>
+                <div class="grade-badge grade-b">Grade: A*</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">Additional Mathematics</div>
+                <div class="grade-badge grade-b">Grade: A</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">Chemistry</div>
+                <div class="grade-badge grade-b">Grade: A</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">Physics</div>
+                <div class="grade-badge grade-b">Grade: A</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">Travel and Tourism</div>
+                <div class="grade-badge grade-b">Grade: A</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">English</div>
+                <div class="grade-badge grade-b">Grade: B</div>
+              </div>
+              <div class="grade-card">
+                <div class="subject-name">French</div>
+                <div class="grade-badge grade-b">Grade: B</div>
+              </div>
+            </div>
+          </div>
+          </div>
     </div>
-  </div>
 
-    </section>
+  </section>
 
     <section id="contact" class="section contact">
       <div class="container">
@@ -1846,21 +1847,31 @@
         header.style.opacity = '1';
       }
     });
+    
+    function toggleDropdown(dropdownId, clickedHeader) {
+    const allDropdowns = document.querySelectorAll('.dropdown-content');
+    const targetDropdown = document.getElementById(dropdownId);
 
-    function toggleDropdown(id, headerElement) {
-      const content = document.getElementById(id);
-      const icon = headerElement.querySelector('.expand-icon');
-      
-      content.classList.toggle("show");
-      headerElement.classList.toggle("active");
-      
-      // Toggle the icon between + and ×
-      if (content.classList.contains("show")) {
-        icon.textContent = "×";
-      } else {
-        icon.textContent = "+";
+    allDropdowns.forEach(dropdown => {
+      if (dropdown !== targetDropdown) {
+        dropdown.style.display = 'none';
       }
+    });
+
+    // Reset all expand icons
+    document.querySelectorAll('.expand-icon').forEach(icon => {
+      icon.textContent = '+';
+    });
+
+    // Toggle the target dropdown
+    if (targetDropdown.style.display === 'block') {
+      targetDropdown.style.display = 'none';
+      clickedHeader.querySelector('.expand-icon').textContent = '+';
+    } else {
+      targetDropdown.style.display = 'block';
+      clickedHeader.querySelector('.expand-icon').textContent = '−';
     }
+  }
 
   </script>
 </body>
