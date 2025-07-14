@@ -1,0 +1,193 @@
+.education-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 2rem;
+    gap: 25px;
+}
+
+.education-card {
+    background: white;
+    padding: 1.5rem;
+    width: 800px;
+    max-width: 90%;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    color: #2d3748;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.card-date {
+    color: #5c1a32;
+    font-size: 1.0rem;
+    margin-bottom: 15px;
+}
+
+.card-institution {
+    color: #4a5568;
+    font-size: 1.0rem;
+}
+
+.card-summary {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.dropdown-toggle {
+    background: #e091a3;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.dropdown-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    margin-top: 0;
+}
+
+.dropdown-content.active {
+            max-height: 500px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+}
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .module-tag {
+            background: #FDF2F8;
+  color: #B85450;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .module-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .gpa-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .gpa-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gpa-value {
+            font-size: 1.0rem;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .gpa-label {
+            color: #4a5568;
+            font-size: 1rem;
+        }
+
+        .gpa-separator {
+            color: #a0aec0;
+            font-size: 1.1rem;
+        }
+
+        .subjects-title {
+            color: #2d3748;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .current-badge {
+            background: linear-gradient(45deg, #48bb78, #38a169);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .dropdown-toggle.active .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+.dropdown-content.active {
+    animation: fadeIn 0.4s ease;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+            
+    h1 {
+        font-size: 2rem;
+    }
+            
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+            
+    .gpa-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+            
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+}

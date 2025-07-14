@@ -1,0 +1,145 @@
+.skill-category{
+    margin-bottom: 40px;
+}
+
+.category-title{
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.progress-item{
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.skill-name{
+    width: 180px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.skill-name::before{
+    content: ' ';
+    width: 4px;
+    height: 20px;
+    background: transparent;
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+.progress-bar {
+    width: 700px;
+    height: 12px;
+    background: #fce7f3;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-left: 20px;
+    border: 1px solid #f3e8ff;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #e5979d;
+    border-radius: 6px;
+    transition: width 2s ease;
+}
+
+.simple-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.simple-item {
+    background: #fce7f3;
+    padding: 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    color: #374151;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    text-align: center;
+    min-width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.simple-item:hover {
+    background: #fce7f3;
+    transform: translateX(5px);
+}
+
+.skill-image {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.skill-image img[src*="vscode"] {
+    filter: brightness(0);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.skill-category {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.skill-category:nth-child(2) { animation-delay: 0.1s; }
+.skill-category:nth-child(3) { animation-delay: 0.2s; }
+.skill-category:nth-child(4) { animation-delay: 0.3s; }
+.skill-category:nth-child(5) { animation-delay: 0.4s; }
+
+.conveyor-container{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    background: linear-gradient(90deg,rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252, 0) 10%, rgba(248, 250, 252, 0) 90%, rgba(248, 250, 252, 1) 100%)
+}
+
+.conveyor-belt {
+    display: flex;
+    gap: 30px;
+    animation: conveyorMove 30s linear infinite;
+    width: fit-content;
+}
+
+@keyframes conveyorMove{
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
