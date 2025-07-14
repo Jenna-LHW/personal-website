@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenna Li Hoi Wah</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <img src="images/logo.png" alt="logo" class="logo"/>
+            
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#learning">Learning</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="hamburger" onclick="toggleSidebar()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="#home" onclick="closeSidebar()">Home</a></li>
+            <li><a href="#about" onclick="closeSidebar()">About</a></li>
+            <li><a href="#experience" onclick="closeSidebar()">Experience</a></li>
+            <li><a href="#skills" onclick="closeSidebar()">Skills</a></li>
+            <li><a href="#projects" onclick="closeSidebar()">Projects</a></li>
+            <li><a href="#learning" onclick="closeSidebar()">Learning</a></li>
+            <li><a href="#contact" onclick="closeSidebar()">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm Jenna Li Hoi Wah</h1>
+                <p>Computer Science Student</p>
+
+                <div class="skill-badges">
+                    <div class="skill-badge">
+                        <div class="skill-icon">
+                            <img src="images/python.svg" alt="python_logo">
+                        </div>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-badge">
+                        <div class="skill-icon">
+                            <img src="images/html5.svg" alt="html_logo">
+                        </div>
+                        <span>HTML</span>
+                    </div>
+                    <div class="skill-badge">
+                        <div class="skill-icon">
+                            <img src="images/css.svg" alt="css_logo">
+                        </div>
+                        <span>CSS</span>
+                    </div>
+                    <div class="skill-badge">
+                        <div class="skill-icon">
+                            <img src="images/javascript.svg" alt="js_logo">
+                        </div>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <a href="#about" class="btn">Learn More About Me</a>
+                <a href="#contact" class="btn-contact">Connect</a>
+            </div>    
+            
+            <div class="hero-image">
+                <img src="images/profile.png" alt="profile">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>My computer science journey truly began in college, where I discovered that this wasn't just a subject I was good at but something I genuinely loved. Writing my first line of code was a turning point. In that moment, I knew I'd found my path.</p>
+                    <p>I believe that learning never stops. Everything I explore, from GUI development to PC repair, isn't just a line on my resume – it's another tool in my problem-solving toolkit. But here's what drives me: I don't just learn for the sake of learning. I learn to build, to innovate, and to make a difference.</p>
+                    <p>When I'm not coding, you might find me experimenting in the kitchen, getting lost in strategic or puzzle games like Tetris, or discovering new music.</p>
+                    <p>Looking ahead, I'm excited to contribute to projects that push boundaries and demonstrate how thoughtful technology can transform the way we work and live.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="code-container">
+                        <div class="window-controls">
+                            <div class="control close"></div>
+                            <div class="control minimize"></div>
+                            <div class="control maximize"></div>
+                        </div>
+                        <div class="code-content">
+                            <span class="code-line"><span class="keyword">def</span> <span class="property">about_me</span>():</span>
+                            <span class="code-line"><span class="keyword">return</span> <span class="brace">{</span></span>
+                            <span class="code-line"><span class="string">'level'</span>: <span class="string">'cs_student_lvl_2'</span>,</span>
+                            <span class="code-line"><span class="string">'university'</span>: <span class="string">'university_of_mauritius'</span>,</span>
+                            <span class="code-line"><span class="brace">}</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Trainee Internal Auditor</h3>
+                            <span class="timeline-company">IBL Together</span>
+                            <span class="timeline-date">November 2024 - December 2024</span>
+                        </div>
+                        <div class="timeline-description">
+                            <p>Gained hands-on experience in internal auditing processes and transformed audit data into compelling visual stories using Excel.</p>
+                            <div class="achievement-tags">
+                                <span class="achievement-tag">Data Visualization</span>
+                                <span class="achievement-tag">Microsoft Excel</span>
+                                <span class="achievement-tag">Data Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skill-category">
+                <div class="category-title">Programming Languages</div>
+                <div class="progress-item">
+                    <div class="skill-name">Python</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="skill-name">HTML/CSS</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="skill-name">SQL</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                <div class="category-title">Development Tools</div>
+                <div class="simple-list">
+                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/vscode.svg" alt="vscode_logo"></div></div><div>VS Code</div></div>
+                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/sql.svg" alt="sql_logo"></div></div><div>SQL server</div></div>
+                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/github.svg" alt="github_logo"></div></div><div>Git Hub</div></div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="category-title">Competencies</div>
+                    <div class="conveyor-container">
+                        <div class="conveyor-belt" id="conveyorBelt">
+                            <div class="simple-item">Web Development (Front-end)</div>
+                            <div class="simple-item">GUI Application Development</div>
+                            <div class="simple-item">Database Management</div>
+                            <div class="simple-item">Data Analysis & Visualization</div>
+                            <div class="simple-item">Data Structure & Algorithms</div>
+                            <div class="simple-item">System Troubleshooting</div>
+                            
+                            <!-- Duplicate all items for seamless loop -->
+                            <div class="simple-item">Web Development (Front-end)</div>
+                            <div class="simple-item">GUI Application Development</div>
+                            <div class="simple-item">Database Management</div>
+                            <div class="simple-item">Data Analysis & Visualization</div>
+                            <div class="simple-item">Data Structure & Algorithms</div>
+                            <div class="simple-item">System Troubleshooting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="category-title">Operating Systems</div>
+                <div class="simple-list">
+                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/windows.svg" alt="windows"></div></div><div>Windows</div></div>
+                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/linux.svg" alt="linux_logo"></div></div><div>Linux</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Personal Portfolio Website</h3>
+                        <div class="featured-badge">Featured</div>
+                        <div class="project-meta">
+                            <div class="project-duration">
+                                <span>⏱️</span>
+                                <span>3 weeks</span>
+                            </div>
+                            <div class="project-status">Completed</div>
+                        </div>
+                        <p class="project-description">
+                            A responsive personal website built with modern HTML5, CSS3, and JavaScript. Features smooth animations, interactive elements, and optimized performance across all devices.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">98</div>
+                                <div class="stat-label">Performance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">93</div>
+                                <div class="stat-label">Accessibility</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">2.3s</div>
+                                <div class="stat-label">Load Time</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jenna-LHW/personal-website" target="_blank" class="project-btn btn-primary">View Code</a>
+                            <a href="https://jennalhw-portfolio.netlify.app/" target="_blank" class="project-btn btn-secondary">Previous Design</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3 class="project-title">Python Tkinter Learning Journey</h3>
+                        <div class="project-meta">
+                            <div class="project-duration">
+                                <span>⏱️</span>
+                                <span>Ongoing</span>
+                            </div>
+                            <div class="project-status">In Progress</div>
+                        </div>
+                        <p class="project-description">
+                            Learning Python GUI development with tkinter - notes, projects and code examples. A beginner's journey documenting progress through GUI programming fundamentals and building functional applications.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Tkinter</span>
+                            <span class="tech-tag">GUI Developement</span>
+                            <span class="tech-tag">OOP</span>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">3+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">10+</div>
+                                <div class="stat-label">Examples</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">5+</div>
+                                <div class="stat-label">Files</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/Jenna-LHW/python-tkinter"  target="_blank" class="project-btn btn-primary">View Learning Journey</a>
+                            <a href="https://github.com/Jenna-LHW"  target="_blank" class="project-btn btn-secondary">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- add other projets here 
+            <div class="projects-grid">
+                <div class="project-card">
+                    
+                </div>
+            </div>
+            -->
+        </div>
+    </section>
+
+    <section id="learning" class="section">
+        <div class="container">
+            <h2 class="section-title">My Learning Journey</h2>
+            
+            <div class="education-cards">            
+                <div class="education-card">
+                    <h2 class="card-title">BSc (Hons) Computer Science</h2>
+                    <div class="card-institution">University of Mauritius</div>
+                    <div class="card-date">Expected Graduation: 2027</div>
+                                    
+                    <div class="gpa-section">
+                        <div class="gpa-item">
+                            <span class="gpa-label">GPA:</span>
+                            <span class="gpa-value">3.67</span>
+                        </div>
+                        <div class="gpa-separator">|</div>
+                        <div class="gpa-item">
+                            <span class="gpa-label">CPA:</span>
+                            <span class="gpa-value">71.9</span>
+                        </div>
+                    </div>
+                    
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        View Modules
+                    </button>
+                    
+                    <div class="dropdown-content">
+                        <div class="subjects-title">Modules Completed</div>
+                        <div class="modules-grid">
+                            <div class="module-tag">Computer Programming</div>
+                            <div class="module-tag">Software Engineering Principles</div>
+                            <div class="module-tag">Computer Organization & Architecture</div>
+                            <div class="module-tag">Database Systems</div>
+                            <div class="module-tag">Communication & Business Skills for IT</div>
+                            <div class="module-tag">Computational Mathematics</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="education-card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title">Higher School Certificate(HSC) - A Level</h2>
+                            <div class="card-institution">AHGM Issac SSS</div>
+                        </div>
+                        <div class="card-date">November 2023</div>
+                    </div>
+                    
+                    <div class="card-summary">
+                        Science side
+                    </div>
+                    
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        View Subjects
+                    </button>
+                    
+                    <div class="dropdown-content">
+                        <div class="subjects-title">Subjects</div>
+                        <div class="modules-grid">
+                            <div class="module-tag">Computer Science</div>
+                            <div class="module-tag">Physics</div>
+                            <div class="module-tag">Mathematics</div>
+                            <div class="module-tag">French</div>
+                            <div class="module-tag">English General Paper</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title">School Certificate(SC) - O Level</h2>
+                            <div class="card-institution">AHGM Issac SSS</div>
+                        </div>
+                        <div class="card-date">June 2021</div>
+                    </div>
+                    
+                    <div class="gpa-section">
+                        <div class="gpa-item">
+                            <span class="gpa-label">Grade Aggregate:</span>
+                            <span class="gpa-value">10</span>
+                        </div>
+                    </div>
+                    
+                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
+                        View Subjects
+                    </button>
+                    
+                    <div class="dropdown-content">
+                        <div class="subjects-title">Subjects</div>
+                        <div class="modules-grid">
+                            <div class="module-tag">Computer Science</div>
+                            <div class="module-tag">Mathematics</div>
+                            <div class="module-tag">Additional Mathematics</div>
+                            <div class="module-tag">Chemistry</div>
+                            <div class="module-tag">Physics</div>
+                            <div class="module-tag">Travel and Tourism</div>
+                            <div class="module-tag">English Language</div>
+                            <div class="module-tag">French</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="connect-section">
+                <h2>Let's Connect</h2>
+                <p>Feel free to reach out for collaboration or just a chat!</p>
+                <div class="social-icons">
+                    <a href="mailto:staceyjenna.lhw@gmail.com">
+                        <img src="images/email.svg" alt="Email Icon" class="icon">
+                    </a>
+                    <a href="https://github.com/jenna-LHW" target="_blank">
+                        <img src="images/github.svg" alt="GitHub Icon" class="icon">
+                    </a>
+                    <a href="https://www.linkedin.com/in/staceyjennalhw" target="_blank">
+                        <img src="images/linkedin.svg" alt="LinkedIn Icon" class="icon">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="last">
+            <p>&copy;2025 Jenna. Built with passion.</p>
+        </div>
+        
+    </footer>
+
+    <script src="/script/script.js"></script>
+</body>
+</html>
