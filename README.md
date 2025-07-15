@@ -15,4 +15,4 @@ This is my personal portfolio website where I share my journey of a computer sci
 
 ## Version History
 - **v2.0**: Current version with improved design and functionality
-- **v1.0**: Old version available at [jennalhw-portfolio.netlify.app](jennalhw-portfolio.netlify.app)
+- **v1.0**: Old version available at [https://jennalhw-portfolio.netlify.app](https://jennalhw-portfolio.netlify.app)
