@@ -312,101 +312,101 @@
         <div class="container">
             <h2 class="section-title">My Learning Journey</h2>
             
-            <div class="education-cards">            
-                <div class="education-card">
-                    <h2 class="card-title">BSc (Hons) Computer Science</h2>
-                    <div class="card-institution">University of Mauritius</div>
-                    <div class="card-date">Expected Graduation: 2027</div>
-                                    
-                    <div class="gpa-section">
-                        <div class="gpa-item">
-                            <span class="gpa-label">GPA:</span>
-                            <span class="gpa-value">3.67</span>
+            <div class="tab-container">
+                <button class="tab active" data-section="university">University</button>
+                <button class="tab" data-section="college">College</button>
+                <button class="tab" data-section="certification">Certification</button>
+            </div>
+
+            <div class="content-container">
+                <div class="section-content active" id="university-section">
+                    <div class="education-card">
+                        <div class="institution">University of Mauritius</div>
+                        <div class="degree">BSc (Hons) Computer Science</div>
+                        <div class="details">Expected Graduation: 2027</div>
+                        <div class="grade-info">
+                            <div class="grade-item">GPA: 3.67</div>
+                            <div class="grade-item">CPA: 71.9</div>
                         </div>
-                        <div class="gpa-separator">|</div>
-                        <div class="gpa-item">
-                            <span class="gpa-label">CPA:</span>
-                            <span class="gpa-value">71.9</span>
-                        </div>
-                    </div>
-                    
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        View Modules
-                    </button>
-                    
-                    <div class="dropdown-content">
-                        <div class="subjects-title">Modules Completed</div>
-                        <div class="modules-grid">
-                            <div class="module-tag">Computer Programming</div>
-                            <div class="module-tag">Software Engineering Principles</div>
-                            <div class="module-tag">Computer Organization & Architecture</div>
-                            <div class="module-tag">Database Systems</div>
-                            <div class="module-tag">Communication & Business Skills for IT</div>
-                            <div class="module-tag">Computational Mathematics</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="education-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">Higher School Certificate(HSC) - A Level</h2>
-                            <div class="card-institution">AHGM Issac SSS</div>
-                        </div>
-                        <div class="card-date">November 2023</div>
-                    </div>
-                    
-                    <div class="card-summary">
-                        Science side
-                    </div>
-                    
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        View Subjects
-                    </button>
-                    
-                    <div class="dropdown-content">
-                        <div class="subjects-title">Subjects</div>
-                        <div class="modules-grid">
-                            <div class="module-tag">Computer Science</div>
-                            <div class="module-tag">Physics</div>
-                            <div class="module-tag">Mathematics</div>
-                            <div class="module-tag">French</div>
-                            <div class="module-tag">English General Paper</div>
+                        <button class="view-btn" onclick="toggleSubjects(this)">View Modules</button>
+                        
+                        <div class="subjects-section">
+                            <h3 class="subjects-title">Modules Completed</h3>
+                            <div class="subjects-grid">
+                                <div class="subject-pill">Computer Programming</div>
+                                <div class="subject-pill">Software Engineering Principles</div>
+                                <div class="subject-pill">Computer Organization & Architecture</div>
+                                <div class="subject-pill">Database Systems</div>
+                                <div class="subject-pill">Communication & Business Skills for IT</div>
+                                <div class="subject-pill">Computational Mathematics</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="education-card">
-                    <div class="card-header">
-                        <div>
-                            <h2 class="card-title">School Certificate(SC) - O Level</h2>
-                            <div class="card-institution">AHGM Issac SSS</div>
+                <div class="section-content" id="college-section">
+                    <div class="education-card">
+                        <div class="institution">AHGM Issac SSS</div>
+                        <div class="degree">Higher School Certificate (HSC) - A Level</div>
+                        <div class="details">November 2023</div>
+                        <div class="specialization">Science side</div>
+                        <button class="view-btn" onclick="toggleSubjects(this)">View Subjects</button>
+                        
+                        <div class="subjects-section">
+                            <h3 class="subjects-title">Subjects</h3>
+                            <div class="subjects-grid">
+                                <div class="subject-pill">Computer Science</div>
+                                <div class="subject-pill">Physics</div>
+                                <div class="subject-pill">Mathematics</div>
+                                <div class="subject-pill">French</div>
+                                <div class="subject-pill">English General Paper</div>
+                            </div>
                         </div>
-                        <div class="card-date">June 2021</div>
                     </div>
-                    
-                    <div class="gpa-section">
-                        <div class="gpa-item">
-                            <span class="gpa-label">Grade Aggregate:</span>
-                            <span class="gpa-value">10</span>
+
+                    <div class="education-card">
+                        <div class="institution">AHGM Issac SSS</div>
+                        <div class="degree">School Certificate (SC) - O Level</div>
+                        <div class="details">June 2021</div>
+                        <div class="grade-info">
+                            <div class="grade-item">Grade Aggregate: 10</div>
+                        </div>
+                        <button class="view-btn" onclick="toggleSubjects(this)">View Subjects</button>
+                        
+                        <div class="subjects-section">
+                            <h3 class="subjects-title">Subjects</h3>
+                            <div class="subjects-grid">
+                                <div class="subject-pill">Computer Science</div>
+                                <div class="subject-pill">Mathematics</div>
+                                <div class="subject-pill">Additional Mathematics</div>
+                                <div class="subject-pill">Chemistry</div>
+                                <div class="subject-pill">Physics</div>
+                                <div class="subject-pill">Travel and Tourism</div>
+                                <div class="subject-pill">English Language</div>
+                                <div class="subject-pill">French</div>
+                            </div>
                         </div>
                     </div>
-                    
-                    <button class="dropdown-toggle" onclick="toggleDropdown(this)">
-                        View Subjects
-                    </button>
-                    
-                    <div class="dropdown-content">
-                        <div class="subjects-title">Subjects</div>
-                        <div class="modules-grid">
-                            <div class="module-tag">Computer Science</div>
-                            <div class="module-tag">Mathematics</div>
-                            <div class="module-tag">Additional Mathematics</div>
-                            <div class="module-tag">Chemistry</div>
-                            <div class="module-tag">Physics</div>
-                            <div class="module-tag">Travel and Tourism</div>
-                            <div class="module-tag">English Language</div>
-                            <div class="module-tag">French</div>
+                </div>
+                
+                <div class="section-content" id="certification-section">
+                    <div class="education-card">
+                        <div class="institution">Venyleos Training Centre, CompuSpace Ltd</div>
+                        <div class="degree">PC Repairs and Maintenance & Basic Networking</div>
+                        <div class="details">October 2024 - January 2025</div>
+                        <button class="view-btn" onclick="toggleSubjects(this)">View Skills</button>
+                        
+                        <div class="subjects-section">
+                            <h3 class="subjects-title">Skills Acquired</h3>
+                            <div class="subjects-grid">
+                                <div class="subject-pill">Hardware Assembly & Upgrade</div>
+                                <div class="subject-pill">OS Installation & Configuration</div>
+                                <div class="subject-pill">Windows & Linux</div>
+                                <div class="subject-pill">Troubleshooting & Diagnostic</div>
+                                <div class="subject-pill">Backup and Recovery</div>
+                                <div class="subject-pill">Computer Security</div>
+                                <div class="subject-pill">Basic Networking</div>
+                            </div>
                         </div>
                     </div>
                 </div>
