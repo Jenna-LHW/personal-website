@@ -1,5 +1,9 @@
 # Development Log - Personal Website Portfolio
 
+# Next Step
+- Focus on performance optimization
+- Update the Performance in project section for the portfolio
+
 ## [July 16, 2025] - Learning Section Enhancement
 
 - **Redesigned**: Learning section with improved layout and styling
@@ -15,7 +19,6 @@
   - Accessibility: 93/100 
   - Best Practices: 100/100
   - SEO: 91/100 
-- **Next Steps**: Focus on performance optimization
 
 ## [July 14, 2025] - Major Restructure & File Organization
 - **Reorganized**: Complete file structure overhaul
