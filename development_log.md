@@ -4,6 +4,10 @@
 - Focus on performance optimization
 - Update the Performance in project section for the portfolio
 
+## [July 19, 2025] - Hero Section Enhancement
+- **Updated**: The profile picture for more accurate representation
+- **Redesigned**: Call to action buttons to put more focus on the primary button; Learn more about me
+
 ## [July 16, 2025] - Learning Section Enhancement
 
 - **Redesigned**: Learning section with improved layout and styling
