@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (institution.includes('University')) {
                 return 'View Modules';
             } else if (institution.includes('Venyleos')) {
-                return 'View Certificate';
+                return 'View Skills';
             } else {
                 return 'View Subjects';
             }
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (institution.includes('University')) {
                 return 'Hide Modules';
             } else if (institution.includes('Venyleos')) {
-                return 'Hide Certificate';
+                return 'Hide Skills';
             } else {
                 return 'Hide Subjects';
             }
