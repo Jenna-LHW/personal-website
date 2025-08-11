@@ -1,5 +1,5 @@
 # Personal Website
-Welcome to my personal portfolio website! This is a responsive website showcasing my journey as a Computer Science student, my experience, skills and prjects.
+Welcome to my personal portfolio website! This is a responsive website showcasing my journey as a Computer Science student, my experience, skills and prjects.  
 **Note:** This website was developed independently as a personal project
 
 ## Live Demo
