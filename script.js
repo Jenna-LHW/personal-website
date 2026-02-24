@@ -428,11 +428,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Contact form
-  document.getElementById("contact-form").addEventListener("submit", e => {
-    e.preventDefault();
-    document.getElementById("contact-form").style.display = "none";
-    document.querySelector(".form-success").style.display = "block";
-  });
+  document.getElementById("contact-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = document.getElementById("contact-form");
+  const submitBtn = form.querySelector("button[type='submit']");
+  const successEl = document.querySelector(".form-success");
+
+  // Grab values
+  const name    = document.getElementById("cf-name").value.trim();
+  const email   = document.getElementById("cf-email").value.trim();
+  const subject = document.getElementById("cf-subject").value.trim();
+  const message = document.getElementById("cf-msg").value.trim();
+
+  // Loading state
+  const originalText = submitBtn.textContent;
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending…";
+
+  try {
+    const res = await fetch("/.netlify/functions/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, subject, message }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.error || "Something went wrong. Please try again.");
+    }
+
+    // Success — hide form, show success message
+    form.style.display = "none";
+    successEl.style.display = "block";
+
+  } catch (err) {
+    // Show inline error without hiding the form
+    let errEl = document.getElementById("form-error-msg");
+    if (!errEl) {
+      errEl = document.createElement("p");
+      errEl.id = "form-error-msg";
+      errEl.style.cssText =
+        "color:#dc2626;font-size:0.85rem;margin-top:0.75rem;text-align:center;";
+      submitBtn.insertAdjacentElement("afterend", errEl);
+    }
+    errEl.textContent = `⚠ ${err.message}`;
+
+    // Re-enable button
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalText;
+  }
+});
 
   navigate("home");
   initTyped();
