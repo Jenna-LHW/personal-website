@@ -1,440 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenna Li Hoi Wah</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenna Li Hoi Wah — CS Student Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css">
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <img src="images/logo.png" alt="logo" class="logo"/>
-            
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#skills">Skills</a>
-                <a href="#projects">Projects</a>
-                <a href="#learning">Learning</a>
-                <a href="#contact">Contact</a>
-            </div>
 
-            <div class="hamburger" onclick="toggleSidebar()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
-
-    <div class="sidebar" id="sidebar">
-        <ul class="sidebar-links">
-            <li><a href="#home" onclick="closeSidebar()">Home</a></li>
-            <li><a href="#about" onclick="closeSidebar()">About</a></li>
-            <li><a href="#experience" onclick="closeSidebar()">Experience</a></li>
-            <li><a href="#skills" onclick="closeSidebar()">Skills</a></li>
-            <li><a href="#projects" onclick="closeSidebar()">Projects</a></li>
-            <li><a href="#learning" onclick="closeSidebar()">Learning</a></li>
-            <li><a href="#contact" onclick="closeSidebar()">Contact</a></li>
-        </ul>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">&lt;<span>JL</span>/&gt;</div>
+      <ul class="nav-links">
+        <li><a data-page="home" class="active">Home</a></li>
+        <li><a data-page="about">About</a></li>
+        <li><a data-page="projects">Projects</a></li>
+        <li><a data-page="contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span><span></span><span></span>
+      </div>
     </div>
+  </nav>
 
-    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+  <!-- Home Page -->
+  <div id="home-page" class="page active">
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Hi, I'm Jenna Li Hoi Wah</h1>
-                <p>Computer Science Student</p>
-
-                <div class="skill-badges">
-                    <div class="skill-badge">
-                        <div class="skill-icon">
-                            <img src="images/python.svg" alt="python_logo">
-                        </div>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-badge">
-                        <div class="skill-icon">
-                            <img src="images/html5.svg" alt="html_logo">
-                        </div>
-                        <span>HTML</span>
-                    </div>
-                    <div class="skill-badge">
-                        <div class="skill-icon">
-                            <img src="images/css.svg" alt="css_logo">
-                        </div>
-                        <span>CSS</span>
-                    </div>
-                    <div class="skill-badge">
-                        <div class="skill-icon">
-                            <img src="images/javascript.svg" alt="js_logo">
-                        </div>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-                <a href="#about" class="btn">Learn More About Me</a>
-                <a href="#contact" class="btn-contact">Contact me</a>
-            </div>    
-            
-            <div class="hero-image">
-                <img src="images/profile2.png" alt="profile">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-text">
+            <div class="hero-tag fade-in">Available for Internship</div>
+            <h1 class="hero-title fade-in stagger-1">
+              Hi, I'm
+              <span class="name"></span>
+            </h1>
+            <p class="hero-typed-wrap fade-in stagger-2" style="font-family:var(--font-mono);color:var(--accent);font-size:1.05rem;margin-bottom:1rem;min-height:1.5em">
+              <span class="hero-typed"></span><span style="animation:blink 1s step-end infinite;border-right:2px solid var(--accent);margin-left:1px"></span>
+            </p>
+            <p class="hero-desc fade-in stagger-3">
+              Tech is more than just a field I am passionate about. It is a lifelong journey of learning, experimenting and crafting innovative solutions with limitless potential.
+            </p>
+            <div class="hero-actions fade-in stagger-4">
+              <button class="btn btn-primary" onclick="navigate('projects')">View My Work →</button>
+              <button class="btn btn-outline" onclick="navigate('contact')">Get in Touch</button>
             </div>
+          </div>
+
+          <div class="hero-visual fade-in stagger-3">
+            <div class="hero-card">
+              <div class="card-header">
+                <div class="card-avatar">JL</div>
+                <div>
+                  <div class="card-name">Jenna Li Hoi Wah</div>
+                  <div class="card-role">CS Student · UoM '27</div>
+                </div>
+              </div>
+              <div class="card-stats">
+                <div class="stat-item"><div class="stat-num">3+</div><div class="stat-lbl">Projects</div></div>
+                <div class="stat-item"><div class="stat-num">2nd</div><div class="stat-lbl">Year</div></div>
+                <div class="stat-item"><div class="stat-num">3.67</div><div class="stat-lbl">GPA</div></div>
+              </div>
+              <div class="card-skills">
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">HTML/CSS</span>
+                <span class="skill-chip">Java</span>
+                <span class="skill-chip">SQL</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>My computer science journey truly began in college, where I discovered that this wasn't just a subject I was good at but something I genuinely loved. Writing my first line of code was a turning point.</p>
-                    <p>I believe that learning never stops. Everything I explore, from GUI development to PC repair, isn't just a line on my resume – it's another tool in my problem-solving toolkit.</p>
-                    <p>When I'm not coding, you might find me experimenting in the kitchen, getting lost in strategic or puzzle games like Tetris, or discovering new music.</p>
-                    <p>Looking ahead, I'm excited to contribute to projects that push boundaries and demonstrate how thoughtful technology can transform the way we work and live.</p>
-                </div>
-                <div class="about-stats">
-                    <div class="code-container">
-                        <div class="window-controls">
-                            <div class="control close"></div>
-                            <div class="control minimize"></div>
-                            <div class="control maximize"></div>
-                        </div>
-                        <div class="code-content">
-                            <span class="code-line"><span class="keyword">def</span> <span class="property">about_me</span>():</span>
-                            <span class="code-line"><span class="keyword">return</span> <span class="brace">{</span></span>
-                            <span class="code-line"><span class="string">'level'</span>: <span class="string">'cs_student_lvl_2'</span>,</span>
-                            <span class="code-line"><span class="string">'university'</span>: <span class="string">'university_of_mauritius'</span>,</span>
-                            <span class="code-line"><span class="brace">}</span></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-header">
-                            <h3>Trainee Internal Auditor</h3>
-                            <span class="timeline-company">IBL Together</span>
-                            <span class="timeline-date">November 2024 - December 2024</span>
-                        </div>
-                        <div class="timeline-description">
-                            <p>Gained hands-on experience in internal auditing processes and transformed audit data into compelling visual stories using Excel.</p>
-                            <div class="achievement-tags">
-                                <span class="achievement-tag">Data Visualization</span>
-                                <span class="achievement-tag">Microsoft Excel</span>
-                                <span class="achievement-tag">Data Analysis</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skill-category">
-                <div class="category-title">Programming Languages</div>
-                <div class="progress-item">
-                    <div class="skill-name">Python</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 80%"></div>
-                    </div>
-                </div>
-                <div class="progress-item">
-                    <div class="skill-name">HTML/CSS</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="progress-item">
-                    <div class="skill-name">JavaScript</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 70%"></div>
-                    </div>
-                </div>
-                <div class="progress-item">
-                    <div class="skill-name">SQL</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%"></div>
-                    </div>
-                </div>
+    <div class="divider"></div>
 
-                <div class="skill-category">
-                <div class="category-title">Development Tools</div>
-                <div class="simple-list">
-                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/vscode.svg" alt="vscode_logo"></div></div><div>VS Code</div></div>
-                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/sql.svg" alt="sql_logo"></div></div><div>SQL server</div></div>
-                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/github.svg" alt="github_logo"></div></div><div>Git Hub</div></div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="category-title">Competencies</div>
-                    <div class="conveyor-container">
-                        <div class="conveyor-belt" id="conveyorBelt">
-                            <div class="simple-item">Web Development (Front-end)</div>
-                            <div class="simple-item">GUI Application Development</div>
-                            <div class="simple-item">Database Management</div>
-                            <div class="simple-item">Data Analysis & Visualization</div>
-                            <div class="simple-item">Data Structure & Algorithms</div>
-                            <div class="simple-item">System Troubleshooting</div>
-                            
-                            <!-- Duplicate all items for seamless loop -->
-                            <div class="simple-item">Web Development (Front-end)</div>
-                            <div class="simple-item">GUI Application Development</div>
-                            <div class="simple-item">Database Management</div>
-                            <div class="simple-item">Data Analysis & Visualization</div>
-                            <div class="simple-item">Data Structure & Algorithms</div>
-                            <div class="simple-item">System Troubleshooting</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="category-title">Operating Systems</div>
-                <div class="simple-list">
-                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/windows.svg" alt="windows"></div></div><div>Windows</div></div>
-                    <div class="simple-item"><div class="skill-icon"><div class="skill-image"><img src="images/linux.svg" alt="linux_logo"></div></div><div>Linux</div></div>
-                </div>
-            </div>
+    <!-- Featured Skills -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">What I Do</div>
+        <h2 class="section-title fade-in">Skills &amp; Expertise</h2>
+        <p class="section-subtitle fade-in">A broad foundation across software development and web development.</p>
+        <div class="featured-skills">
+          <div class="skills-grid"></div>
         </div>
+        <div style="text-align:center;margin-top:2rem">
+          <button class="btn btn-outline" onclick="navigate('about')">See Full Skill Breakdown →</button>
+        </div>
+      </div>
     </section>
 
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Personal Portfolio Website</h3>
-                        <div class="featured-badge">Featured</div>
-                        <div class="project-meta">
-                            <div class="project-duration">
-                                <span>⏱️</span>
-                                <span>3 weeks</span>
-                            </div>
-                            <div class="project-status">Completed</div>
-                        </div>
-                        <p class="project-description">
-                            A responsive personal website built with modern HTML5, CSS3, and JavaScript. Features smooth animations, interactive elements, and optimized performance across all devices.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">75</div>
-                                <div class="stat-label">Performance</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">93</div>
-                                <div class="stat-label">Accessibility</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">12.0s</div>
-                                <div class="stat-label">Load Time</div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Jenna-LHW/personal-website" target="_blank" class="project-btn btn-primary">View Code</a>
-                            <a href="https://jennalhw-portfolio.netlify.app/" target="_blank" class="project-btn btn-secondary">Previous Design</a>
-                        </div>
-                    </div>
-                </div>
+    <div class="divider"></div>
 
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Code Experiments & Mini Projects</h3>
-                        <div class="project-meta">
-                            <div class="project-duration">
-                                <span>⏱️</span>
-                                <span>Ongoing</span>
-                            </div>
-                            <div class="project-status">In Progress</div>
-                        </div>
-                        <p class="project-description">
-                            Explore more of my work including small projects and code experiments. Each  project demonstrates different aspects of my development skills and learning journey.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">GUI Developement</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                        <div class="project-stats">
-                            <div class="stat-item">
-                                <div class="stat-value">5+</div>
-                                <div class="stat-label">Repositories</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">50+</div>
-                                <div class="stat-label">Commits</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-value">Jun 2025</div>
-                                <div class="stat-label">Active Since:</div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Jenna-LHW"  target="_blank" class="project-btn btn-primary">View Github</a>
-                            <a href="https://github.com/Jenna-LHW?tab=repositories"  target="_blank" class="project-btn btn-secondary">View Repositories</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Featured Projects -->
+    <section class="section" style="background:var(--bg-alt)">
+      <div class="container">
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-title fade-in">Featured Projects</h2>
+        <p class="section-subtitle fade-in">A handful of things I've built .</p>
+        <div class="projects-grid" id="home-projects-grid"></div>
+        <div style="text-align:center;margin-top:2.5rem">
+          <button class="btn btn-outline" onclick="navigate('projects')">See All Projects →</button>
         </div>
+      </div>
     </section>
 
-    <section id="learning" class="section">
-        <div class="container">
-            <h2 class="section-title">My Learning Journey</h2>
-            
-            <div class="tab-container">
-                <button class="tab active" data-section="university">University</button>
-                <button class="tab" data-section="college">College</button>
-                <button class="tab" data-section="certification">Certification</button>
-            </div>
+    <div class="divider"></div>
 
-            <div class="content-container">
-                <div class="section-content active" id="university-section">
-                    <div class="education-card">
-                        <div class="institution">University of Mauritius</div>
-                        <div class="degree">BSc (Hons) Computer Science</div>
-                        <div class="details">Expected Graduation: 2027</div>
-                        <div class="grade-info">
-                            <div class="grade-item">GPA: 3.67</div>
-                            <div class="grade-item">CPA: 71.9</div>
-                        </div>
-                        <button class="view-btn" onclick="toggleSubjects(this)">View Modules</button>
-                        
-                        <div class="subjects-section">
-                            <h3 class="subjects-title">Modules Completed</h3>
-                            <div class="subjects-grid">
-                                <div class="subject-pill">Computer Programming</div>
-                                <div class="subject-pill">Software Engineering Principles</div>
-                                <div class="subject-pill">Computer Organization & Architecture</div>
-                                <div class="subject-pill">Database Systems</div>
-                                <div class="subject-pill">Communication & Business Skills for IT</div>
-                                <div class="subject-pill">Computational Mathematics</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-content" id="college-section">
-                    <div class="education-card">
-                        <div class="institution">AHGM Issac SSS</div>
-                        <div class="degree">Higher School Certificate (HSC) - A Level</div>
-                        <div class="details">November 2023</div>
-                        <div class="specialization">Science side</div>
-                        <button class="view-btn" onclick="toggleSubjects(this)">View Subjects</button>
-                        
-                        <div class="subjects-section">
-                            <h3 class="subjects-title">Subjects</h3>
-                            <div class="subjects-grid">
-                                <div class="subject-pill">Computer Science</div>
-                                <div class="subject-pill">Physics</div>
-                                <div class="subject-pill">Mathematics</div>
-                                <div class="subject-pill">French</div>
-                                <div class="subject-pill">English General Paper</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="education-card">
-                        <div class="institution">AHGM Issac SSS</div>
-                        <div class="degree">School Certificate (SC) - O Level</div>
-                        <div class="details">June 2021</div>
-                        <div class="grade-info">
-                            <div class="grade-item">Grade Aggregate: 10</div>
-                        </div>
-                        <button class="view-btn" onclick="toggleSubjects(this)">View Subjects</button>
-                        
-                        <div class="subjects-section">
-                            <h3 class="subjects-title">Subjects</h3>
-                            <div class="subjects-grid">
-                                <div class="subject-pill">Computer Science</div>
-                                <div class="subject-pill">Mathematics</div>
-                                <div class="subject-pill">Additional Mathematics</div>
-                                <div class="subject-pill">Chemistry</div>
-                                <div class="subject-pill">Physics</div>
-                                <div class="subject-pill">Travel and Tourism</div>
-                                <div class="subject-pill">English Language</div>
-                                <div class="subject-pill">French</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section-content" id="certification-section">
-                    <div class="education-card">
-                        <div class="institution">Venyleos Training Centre, CompuSpace Ltd</div>
-                        <div class="degree">PC Repairs and Maintenance & Basic Networking</div>
-                        <div class="details">October 2024 - January 2025</div>
-                        <button class="view-btn" onclick="toggleSubjects(this)">View Skills</button>
-                        
-                        <div class="subjects-section">
-                            <h3 class="subjects-title">Skills Acquired</h3>
-                            <div class="subjects-grid">
-                                <div class="subject-pill">Hardware Assembly & Upgrade</div>
-                                <div class="subject-pill">OS Installation & Configuration</div>
-                                <div class="subject-pill">Windows & Linux</div>
-                                <div class="subject-pill">Troubleshooting & Diagnostic</div>
-                                <div class="subject-pill">Backup and Recovery</div>
-                                <div class="subject-pill">Computer Security</div>
-                                <div class="subject-pill">Basic Networking</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="connect-section">
-                <h2>Let's Connect</h2>
-                <p>Feel free to reach out for collaboration or just a chat!</p>
-                <div class="social-icons">
-                    <a href="mailto:staceyjenna.lhw@gmail.com">
-                        <img src="images/email.svg" alt="Email Icon" class="icon">
-                    </a>
-                    <a href="https://github.com/jenna-LHW" target="_blank">
-                        <img src="images/github.svg" alt="GitHub Icon" class="icon">
-                    </a>
-                    <a href="https://www.linkedin.com/in/staceyjennalhw" target="_blank">
-                        <img src="images/linkedin.svg" alt="LinkedIn Icon" class="icon">
-                    </a>
-                </div>
-            </div>
-        </div>
+    <!-- Experience -->
+    <section class="section">
+      <div class="container" style="max-width:700px">
+        <div class="section-label">Background</div>
+        <h2 class="section-title fade-in">Experience</h2>
+        <p class="section-subtitle fade-in">Practical experience alongside my studies.</p>
+        <div class="timeline" id="home-timeline"></div>
+      </div>
     </section>
 
     <footer>
-        <div class="last">
-            <p>&copy;2025 Jenna. Built with passion.</p>
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2026 Jenna Li Hoi Wah</span>
+          <div class="footer-links">
+            <a onclick="navigate('about')">About</a>
+            <a onclick="navigate('projects')">Projects</a>
+            <a onclick="navigate('contact')">Contact</a>
+          </div>
         </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="/script/script.js"></script>
+  <!-- About Page -->
+  <div id="about-page" class="page">
+    <section class="section">
+      <div class="container">
+        <div class="about-grid">
+
+          <!-- Sidebar -->
+         <div class="about-sidebar fade-in">
+            <!-- Smaller avatar -->
+            <div class="about-avatar">JL</div>   <!-- or use <img> if you have a photo -->
+
+            <div class="about-name">Jenna Li Hoi Wah</div>
+            <div class="about-role">CS Student</div>   <!-- shortened -->
+
+            <div class="about-links">
+                <div class="about-link">
+  <i class="fi fi-rr-marker"></i> Port Louis, Mauritius
+</div>
+                <div class="about-link">
+  <i class="fi fi-rr-graduation-cap"></i> University of Mauritius
+</div>
+
+<div class="about-link" onclick="navigate('contact')" style="cursor:pointer;color:var(--accent)">
+  <i class="fi fi-rr-envelope"></i> Contact Me
+</div>
+            </div>
+        </div>
+
+          <!-- Main Content -->
+          <div class="about-content">
+            <div>
+              <div class="section-label">About Me</div>
+              <h2 class="section-title fade-in" style="margin-bottom:1rem">A developer who loves to build.</h2>
+              <p class="about-bio fade-in"></p>
+            </div>
+
+            <!-- Skills -->
+<!-- Skills -->
+<div class="skills-section fade-in">
+  <div class="section-label">Skills</div>
+  <h3>Technical Proficiency</h3>
+
+  <div class="skills-groups">
+
+  <!-- ===== Languages ===== -->
+  <div class="skill-group">
+    <div class="skill-category-title">Languages</div>
+
+    <div class="skill-logos-grid">
+      <div class="skill-logo-item" data-tooltip="Python">
+        <i class="devicon-python-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="Java">
+        <i class="devicon-java-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="C">
+        <i class="devicon-c-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="JavaScript">
+        <i class="devicon-javascript-plain colored"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Web & Frameworks ===== -->
+  <div class="skill-group">
+    <div class="skill-category-title">Web & Frameworks</div>
+
+    <div class="skill-logos-grid">
+      <div class="skill-logo-item" data-tooltip="HTML5">
+        <i class="devicon-html5-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="CSS3">
+        <i class="devicon-css3-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="Django">
+        <i class="devicon-django-plain colored"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Databases ===== -->
+  <div class="skill-group">
+    <div class="skill-category-title">Databases</div>
+
+    <div class="skill-logos-grid">
+      <div class="skill-logo-item" data-tooltip="MySQL">
+        <i class="devicon-mysql-plain colored"></i>
+      </div>
+      <div class="skill-logo-item" data-tooltip="Microsoft SQL Server">
+        <i class="devicon-microsoftsqlserver-plain colored"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  <!-- Optional: proficiency bars or text badges as fallback / secondary view -->
+  <div id="skills-bars-wrap" style="margin-top: 3rem; opacity: 0.9; display: none;">
+    <!-- You can populate this dynamically or statically later if desired -->
+  </div>
+</div>
+
+            <!-- Experience -->
+            <div class="fade-in">
+              <div class="section-label">Experience</div>
+              <h3 style="font-size:1.15rem;margin-bottom:1.5rem">Work History</h3>
+              <div class="timeline" id="about-timeline"></div>
+            </div>
+
+            <!-- Education -->
+            <div class="fade-in">
+              <div class="section-label">Education</div>
+              <h3 style="font-size:1.15rem;margin-bottom:1.25rem">Academic Background</h3>
+              <div id="edu-list" style="display:flex;flex-direction:column;gap:1rem"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2025 Jenna Li Hoi Wah</span>
+          <div class="footer-links">
+            <a onclick="navigate('home')">Home</a>
+            <a onclick="navigate('projects')">Projects</a>
+            <a onclick="navigate('contact')">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+ <!-- Project Page -->
+  <div id="projects-page" class="page">
+    <section class="section">
+      <div class="container">
+        <div class="section-label">My Work</div>
+        <h2 class="section-title fade-in">All Projects</h2>
+        <p class="section-subtitle fade-in">Click any project to see the full breakdown. </p>
+
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web</button>
+          <button class="filter-btn" data-filter="java">Java</button>
+          <button class="filter-btn" data-filter="other">Other</button>
+        </div>
+
+        <div class="projects-grid" id="all-projects-grid"></div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2025 Jenna Li Hoi Wah</span>
+          <div class="footer-links">
+            <a onclick="navigate('home')">Home</a>
+            <a onclick="navigate('about')">About</a>
+            <a onclick="navigate('contact')">Contact</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- Project Page Detail -->
+  <div id="project-detail-page" class="page">
+    <section class="section">
+      <div class="container" id="detail-container"></div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2025 Jenna Li Hoi Wah</span>
+          <div class="footer-links">
+            <a onclick="navigate('projects')">← Back to Projects</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- Contact Page -->
+  <div id="contact-page" class="page">
+    <section class="section">
+      <div class="container">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title fade-in">Let's Talk</h2>
+        <p class="section-subtitle fade-in">Have a project in mind or just want to say hello? I'd love to hear from you.</p>
+
+        <div class="contact-grid">
+          <!-- Info -->
+          <div class="contact-info fade-in">
+            <p class="contact-intro">
+              I'm a second-year CS student at the University of Mauritius, looking for an internship in software development, web engineering, or any exciting tech role. I'm a fast learner, team player, and genuinely love what I do.
+            </p>
+            <div class="contact-method">
+  <span class="contact-method-icon">
+    <i class="fi fi-rr-envelope"></i>
+  </span>
+  <div>
+    <div class="contact-method-label">Email</div>
+    <div class="contact-method-val contact-email"></div>
+  </div>
+</div>
+
+<div class="contact-method">
+  <span class="contact-method-icon">
+    <i class="fi fi-brands-github"></i>
+  </span>
+  <div>
+    <div class="contact-method-label">GitHub</div>
+    <div class="contact-method-val contact-github"></div>
+  </div>
+</div>
+
+<div class="contact-method">
+  <span class="contact-method-icon">
+    <i class="fi fi-brands-linkedin"></i>
+  </span>
+  <div>
+    <div class="contact-method-label">LinkedIn</div>
+    <div class="contact-method-val contact-linkedin"></div>
+  </div>
+</div>
+
+<div class="contact-method">
+  <span class="contact-method-icon">
+    <i class="fi fi-rr-marker"></i>
+  </span>
+  <div>
+    <div class="contact-method-label">Location</div>
+    <div class="contact-method-val contact-location"></div>
+  </div>
+</div>
+          </div>
+
+          <!-- Form -->
+          <div class="contact-form fade-in stagger-2">
+            <form id="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cf-name">Your Name</label>
+                  <input type="text" id="cf-name" placeholder="Jane Smith" required />
+                </div>
+                <div class="form-group">
+                  <label for="cf-email">Email Address</label>
+                  <input type="email" id="cf-email" placeholder="jane@company.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cf-subject">Subject</label>
+                <input type="text" id="cf-subject" placeholder="Internship opportunity at ..." required />
+              </div>
+              <div class="form-group">
+                <label for="cf-msg">Message</label>
+                <textarea id="cf-msg" placeholder="Hi Jenna, I'd like to discuss..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Send Message →</button>
+            </form>
+            <div class="form-success">
+              <div class="form-success-icon">✅</div>
+              <h3>Message Sent!</h3>
+              <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-inner">
+          <span class="footer-copy">© 2025 Jenna Li Hoi Wah</span>
+          <div class="footer-links">
+            <a onclick="navigate('home')">Home</a>
+            <a onclick="navigate('about')">About</a>
+            <a onclick="navigate('projects')">Projects</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <style>
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  </style>
+
+  <script src="script.js"></script>
 </body>
 </html>
