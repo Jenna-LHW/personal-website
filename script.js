@@ -45,16 +45,6 @@ featuredSkills: [
 
   experience: [
   {
-    date: "Nov 2024 – Dec 2024",
-    title: "Trainee Internal Audit",
-    company: "IBL Together",
-    desc: [
-      "Designed 15+ data analytics test cases to improve audit procedures and testing efficiency",
-      "Analysed 500+ financial records to extract key performance metrics and trends",
-      "Created visual reports in Microsoft Excel to simplify complex findings for senior management"
-    ],
-  },
-  {
     date: "Oct 2025 – Jan 2026",
     title: "Intern (Projects Team)",
     company: "BDO IT Consulting",
@@ -63,6 +53,16 @@ featuredSkills: [
       "Developed automation agents in Java within HCL Notes to streamline business workflows",
       "Implemented form and view logic using LotusScript and Formula language",
       "Enhanced system functionality and data handling efficiency across internal applications"
+    ],
+  },
+  {
+    date: "Nov 2024 – Dec 2024",
+    title: "Trainee Internal Audit",
+    company: "IBL Together",
+    desc: [
+      "Designed 15+ data analytics test cases to improve audit procedures and testing efficiency",
+      "Analysed 500+ financial records to extract key performance metrics and trends",
+      "Created visual reports in Microsoft Excel to simplify complex findings for senior management"
     ],
   },
 ],
@@ -84,7 +84,7 @@ featuredSkills: [
       year: "Jun 2021",
       degree: "School Certificate (SC) – O Level",
       school: "AHGM Issac SSS",
-      note: "Computer Science · Mathematics · Add. Mathematics · Chemistry · Physics · English",
+      note: "Computer Science · Mathematics · Add Mathematics · Chemistry · Physics · English",
     },
   ],
 
