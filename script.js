@@ -137,7 +137,7 @@ featuredSkills: [
         "Custom-built administrative dashboard separate from Django’s default admin interface"
         ],
       techStack: ["Python", "Django", "HTML5", "CSS3", "JavaScript"],
-      links: { github: "#", live: "#" },
+      links: { github: "https://github.com/Jenna-LHW/personal-website" },
     },
     {
       id: "placement-system",
@@ -163,7 +163,7 @@ featuredSkills: [
         "Role-based access control for Students, Admins, and Companies"
         ],
       techStack: ["Java", "Swing", "JDBC", "MySQL"],
-      links: { github: "#", live: "#" },
+      links: {  },
     },
   ],
 };
@@ -334,15 +334,23 @@ function renderProjectDetail(id) {
           <h4>Tech Stack</h4>
           <div class="card-skills">${p.techStack.map(t => `<span class="skill-chip">${t}</span>`).join("")}</div>
         </div>
-        <div class="detail-sidebar-card fade-in">
-          <h4>Links</h4>
-          <div style="display:flex;flex-direction:column;gap:0.6rem">
-            <a href="${p.links.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="width:100%;justify-content:center">⚙ View on GitHub</a>
+        ${(!p.links.github && !p.links.live)
+          ? `<div class="detail-sidebar-card fade-in">
+              <h4>Links</h4>
+              <span style="font-size:0.8rem;color:var(--text-muted);text-align:center;display:block;padding:0.5rem">Still in progress</span>
+            </div>`
+          : `<div class="detail-sidebar-card fade-in">
+              <h4>Links</h4>
+              <div style="display:flex;flex-direction:column;gap:0.6rem">
+                ${p.links.github
+                  ? `<a href="${p.links.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="width:100%;justify-content:center">⚙ View on GitHub</a>`
+                  : ''}
                 ${p.links.live
-                ? `<a href="${p.links.live}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">↗ Live Demo</a>`
-                : `<span style="font-size:0.8rem;color:var(--text-muted);text-align:center;display:block;padding:0.5rem">No live demo available</span>`}
-          </div>
-        </div>
+                  ? `<a href="${p.links.live}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">↗ Live Demo</a>`
+                  : `<span style="font-size:0.8rem;color:var(--text-muted);text-align:center;display:block;padding:0.5rem">No live demo available</span>`}
+              </div>
+            </div>`
+        }
       </div>
     </div>`;
 }
