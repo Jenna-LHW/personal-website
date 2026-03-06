@@ -1,28 +1,51 @@
-# Personal Website
-Welcome to my personal portfolio website! This is a responsive website showcasing my journey as a Computer Science student, my experience, skills and prjects.  
-**Note:** This website was developed independently as a personal project
+# Personal Portfolio
 
-## Live Demo
-Visit the live website: [https://jenna-personal-website.netlify.app](https://jenna-personal-website.netlify.app)
+A fully responsive personal portfolio website built with HTML, CSS, and JavaScript, showcasing my projects, skills, and experience as a Computer Science student.
 
-## About 
-This is my personal portfolio website where I share my journey of a computer science student.
+**Live Site:** [jenna-personal-website.netlify.app](https://jenna-personal-website.netlify.app)
 
-## Technology Used
-- HTML5
-- CSS3
-- JavaScript
-- Netlify
-*Note*: This project reflects my understanding of HTML, CSS and JavaScript at a beginner level, learned independenly without formal web development training.
 
-## Learning Journey
-This project represents my first dive into web development, where I:
-- Taught myself HTML, CSS, and basic JavaScript from online resources
-- Learned through trial and error rather than formal instruction
-- Focused on making something functional rather than following best practices
-- Built this entirely during my university studies without taking web development courses
+## Features
 
-If you notice areas that could be improved or don't follow standard conventions, that's because I was learning as I went! This website is a snapshot of my self-taught web development skills **at that time**.
+- Custom client-side routing — seamless navigation without page reloads
+- Dynamic DOM rendering driven by a centralized data object
+- Project filtering by category with real-time UI updates
+- Scroll-triggered animations using the Intersection Observer API
+- Typed text animation in the hero section
+- Contact form with serverless email delivery via Resend
+- Responsive layout for desktop and mobile
+- Projects loaded dynamically from a Supabase database
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | HTML5, CSS3, Vanilla JavaScript |
+| Backend (email) | Netlify Functions + Resend API |
+| Database | Supabase (PostgreSQL) |
+| Hosting | Netlify |
+
+
+## Project Structure
+
+```
+├── index.html
+├── styles.css
+├── script.js
+└── netlify/
+    └── functions/
+        └── send-email.js
+```
+
+
+## How It Works
+
+### Dynamic Project Loading
+Projects are stored in a Supabase PostgreSQL database and fetched at runtime via the Supabase REST API. Adding a new project requires no code changes — just insert a new row in the database and it appears on the site automatically.
+
+### Contact Form
+Form submissions are handled by a Netlify serverless function (`send-email.js`) which calls the Resend API to forward messages directly to my inbox. The API key is stored securely as a Netlify environment variable and is never exposed to the frontend.
+
+
 ## Version History
-- **v2.0**: Current version with improved design and functionality
-- **v1.0**: Old version available at [https://jennalhw-portfolio.netlify.app](https://jennalhw-portfolio.netlify.app)
+- **v1.0** — Original version available at [jennalhw-portfolio.netlify.app](https://jennalhw-portfolio.netlify.app)

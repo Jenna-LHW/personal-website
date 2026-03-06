@@ -1,3 +1,50 @@
+// ===== SUPABASE CONFIG =====
+const SUPABASE_URL = "https://zujdvrlxiocnotwekhmw.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp1amR2cmx4aW9jbm90d2VraG13Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3ODI5ODUsImV4cCI6MjA4ODM1ODk4NX0.dVpi7fKPuLV25yuX9465o_3tGt1m0dA4ENebUNScm7c";
+
+async function loadProjectsFromSupabase() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/projects?select=*&order=id`,
+      {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`
+        }
+      }
+    );
+
+    if (!res.ok) throw new Error("Failed to fetch projects");
+
+    const projects = await res.json();
+
+    // Map snake_case DB columns to camelCase used in the app
+    DATA.projects = projects.map(p => ({
+      id:         p.id,
+      title:      p.title,
+      desc:       p.desc,
+      tags:       p.tags       || [],
+      category:   p.category,
+      emoji:      p.emoji,
+      image:      p.image,
+      thumbColor: p.thumb_color || [],
+      github:     p.github,
+      live:       p.live,
+      fullDesc:   p.full_desc,
+      year:       p.year,
+      role:       p.role,
+      Context:    p.context,
+      features:   p.features   || [],
+      techStack:  p.tech_stack  || [],
+      links:      p.links       || {},
+    }));
+
+  } catch (err) {
+    console.error("Supabase error:", err);
+    DATA.projects = [];
+  }
+}
+
 // ===== DATA =====
 const DATA = {
   name: "Jenna Li Hoi Wah",
@@ -5,67 +52,67 @@ const DATA = {
   role: "Computer Science Student",
   university: "University of Mauritius",
   year: "2nd Year",
-  bio: `I’m a second-year BSc (Hons) Computer Science student at the University of Mauritius with a strong interest in building practical, meaningful software. 
+  bio: `I'm a second-year BSc (Hons) Computer Science student at the University of Mauritius with a strong interest in building practical, meaningful software. 
 
-My experience spans full-stack web development, Java GUI applications, and database systems. Through academic projects and internships, I’ve worked with data analytics, SQL scripting, backend development, and enterprise system customization. With every project, I focus on writing clean, efficient code and designing solutions that are both functional and scalable.
+My experience spans full-stack web development, Java GUI applications, and database systems. Through academic projects and internships, I've worked with data analytics, SQL scripting, backend development, and enterprise system customization. With every project, I focus on writing clean, efficient code and designing solutions that are both functional and scalable.
 
-I see every challenge as an opportunity to grow. Whether I’m exploring new frameworks, refining system logic, or understanding how larger applications operate, I’m continuously expanding my technical toolkit and strengthening my analytical thinking.
+I see every challenge as an opportunity to grow. Whether I'm exploring new frameworks, refining system logic, or understanding how larger applications operate, I'm continuously expanding my technical toolkit and strengthening my analytical thinking.
 
-Looking ahead, I’m eager to contribute to impactful projects, collaborate with experienced professionals, and continue developing into a well-rounded software engineer.`,
+Looking ahead, I'm eager to contribute to impactful projects, collaborate with experienced professionals, and continue developing into a well-rounded software engineer.`,
   email: "staceyjenna.lhw@gmail.com",
   github: "github.com/Jenna-LHW",
   linkedin: "linkedin.com/in/staceyjennalhw",
   location: "Mauritius",
 
   skills: {
-  "Programming Languages": ["Python", "Java", "C", "JavaScript"],
-  "Web & Frameworks": ["Django", "HTML5", "CSS3"],
-  "Databases": ["SQL Server", "MySQL"],
-  "Tools & Platforms": ["GitHub", "Linux", "HCL Notes"],
-  "Core Concepts": ["Data Structures", "Algorithms", "Database Design"]
-},
+    "Programming Languages": ["Python", "Java", "C", "JavaScript"],
+    "Web & Frameworks": ["Django", "HTML5", "CSS3"],
+    "Databases": ["SQL Server", "MySQL"],
+    "Tools & Platforms": ["GitHub", "Linux", "HCL Notes"],
+    "Core Concepts": ["Data Structures", "Algorithms", "Database Design"]
+  },
 
-featuredSkills: [
-  { 
-    icon: '<i class="fi fi-rr-globe"></i>',     
-    name: "Full-Stack Web Development", 
-    desc: "Building responsive web applications using HTML, CSS, JavaScript, and Django, with backend logic, form handling, and admin customization." 
-  },
-  { 
-    icon: '<i class="fi fi-brands-java"></i>',
-    name: "Java & Desktop Applications", 
-    desc: "Designing and developing GUI-based desktop applications using Java Swing." 
-  },
-  { 
-    icon: '<i class="fi fi-rr-database"></i>',
-    name: "Database & SQL", 
-    desc: "Writing SQL queries for data migration, validation, and relational database management, with experience integrating databases into applications." 
-  },
-],
+  featuredSkills: [
+    {
+      icon: '<i class="fi fi-rr-globe"></i>',
+      name: "Full-Stack Web Development",
+      desc: "Building responsive web applications using HTML, CSS, JavaScript, and Django, with backend logic, form handling, and admin customization."
+    },
+    {
+      icon: '<i class="fi fi-brands-java"></i>',
+      name: "Java & Desktop Applications",
+      desc: "Designing and developing GUI-based desktop applications using Java Swing."
+    },
+    {
+      icon: '<i class="fi fi-rr-database"></i>',
+      name: "Database & SQL",
+      desc: "Writing SQL queries for data migration, validation, and relational database management, with experience integrating databases into applications."
+    },
+  ],
 
   experience: [
-  {
-    date: "Oct 2025 – Jan 2026",
-    title: "Intern (Projects Team)",
-    company: "BDO IT Consulting",
-    desc: [
-      "Contributed to enterprise data migration through SQL scripting and validation tasks",
-      "Developed automation agents in Java within HCL Notes to streamline business workflows",
-      "Implemented form and view logic using LotusScript and Formula language",
-      "Enhanced system functionality and data handling efficiency across internal applications"
-    ],
-  },
-  {
-    date: "Nov 2024 – Dec 2024",
-    title: "Trainee Internal Audit",
-    company: "IBL Together",
-    desc: [
-      "Designed 15+ data analytics test cases to improve audit procedures and testing efficiency",
-      "Analysed 500+ financial records to extract key performance metrics and trends",
-      "Created visual reports in Microsoft Excel to simplify complex findings for senior management"
-    ],
-  },
-],
+    {
+      date: "Oct 2025 – Jan 2026",
+      title: "Intern (Projects Team)",
+      company: "BDO IT Consulting",
+      desc: [
+        "Contributed to enterprise data migration through SQL scripting and validation tasks",
+        "Developed automation agents in Java within HCL Notes to streamline business workflows",
+        "Implemented form and view logic using LotusScript and Formula language",
+        "Enhanced system functionality and data handling efficiency across internal applications"
+      ],
+    },
+    {
+      date: "Nov 2024 – Dec 2024",
+      title: "Trainee Internal Audit",
+      company: "IBL Together",
+      desc: [
+        "Designed 15+ data analytics test cases to improve audit procedures and testing efficiency",
+        "Analysed 500+ financial records to extract key performance metrics and trends",
+        "Created visual reports in Microsoft Excel to simplify complex findings for senior management"
+      ],
+    },
+  ],
 
   education: [
     {
@@ -88,88 +135,8 @@ featuredSkills: [
     },
   ],
 
-  projects: [
-    {
-      id: "portfolio",
-      title: "Personal Portfolio Website",
-      image: "images/portfolio.png",
-      tags: ["HTML", "CSS", "JavaScript"],
-      category: "web",
-      emoji: "🎨",
-      thumbColor: ["#f0f9ff", "#e0f2fe"],
-      desc: "A fully responsive, data-driven personal portfolio website built with vanilla JavaScript, featuring dynamic rendering, custom routing, animated interactions, and structured component-based design.",
-      year: "Jun 2025",
-      role: "Designer & Full-Stack Developer",
-      Context: "Personal Project",
-      fullDesc: "This personal portfolio website was designed and developed from scratch using HTML5, CSS3, and vanilla JavaScript to showcase my projects, technical skills, and professional experience. The application follows a structured, data-driven architecture where all content is managed through a centralized JavaScript object and dynamically rendered into the DOM. A custom client-side routing system enables seamless navigation between sections without reloading the page. The project includes scroll-triggered animations using Intersection Observer, a dynamic project filtering system, reusable rendering functions, and a typed text animation for enhanced user interaction. The goal was to build a clean, maintainable, and scalable portfolio while applying modern front-end development principles without relying on external frameworks.",
-      features: [
-        "Custom client-side routing system for multi-page navigation",
-        "Dynamic DOM rendering using a centralized data object",
-        "Project filtering by category with real-time UI updates",
-        "Scroll-triggered animations using Intersection Observer API",
-        "Typed text animation for interactive hero section",
-        "Fully responsive layout optimized for desktop and mobile",
-        "Modular and reusable JavaScript rendering functions",
-        "Deployed using Netlify for continuous hosting"
-        ],
-      techStack: ["HTML5", "CSS3", "Vanilla JavaScript", "Netlify"],
-      links: { github: "https://github.com/Jenna-LHW/personal-website", live: "https://jenna-personal-website.netlify.app/" },
-    },
-    {
-      id: "finders-keepers",
-      title: "Finder’s Keepers – Lost & Found System",
-      image: "images/finders-keepers.png",
-      tags: ["Django", "Python", "HTML", "CSS", "JavaScript"],
-      category: "web",
-      emoji: "🔎",
-      thumbColor: ["#f5f3ff", "#ede9fe"],
-      desc: "A Django-based Lost & Found web application developed as part of the Web & Mobile App Development module, enabling university staff and students to report and track lost or found items through a centralized platform.",
-      year: "2025",
-      role: "Frontend, Backend & Admin Interface Developer",
-      Context: "University Group Project",
-      fullDesc: "Finder’s Keepers is a full-stack Lost & Found management system developed using Django as part of a university group assignment for the Web & Mobile App Development module. The platform enables University of Mauritius staff and students to report lost or found items, browse existing reports, and connect with potential owners through a structured and user-friendly interface. Although Django provides a built-in admin panel, we designed and implemented a separate customized admin dashboard to better suit the system’s workflow and administrative requirements.",
-      features: [
-        "Browse reported lost items and found items through categorized listings",
-        "Submit reports for lost or found items with structured form validation",
-        "AI-powered chatbot for basic user assistance and navigation support",
-        "User review and comment system for feedback and interaction",
-        "Dedicated Contact Us page for inquiries and communication",
-        "Custom-built administrative dashboard separate from Django’s default admin interface"
-        ],
-      techStack: ["Python", "Django", "HTML5", "CSS3", "JavaScript"],
-      links: { github: "https://github.com/Jenna-LHW/Finders-Keepers" },
-    },
-    {
-      id: "placement-system",
-      title: "University Placement Management System",
-      image: "images/placement-system.png",
-      tags: ["Java", "Swing", "JDBC", "MySQL"],
-      category: "java",
-      emoji: "🎓",
-      thumbColor: ["#fef9c3", "#fde68a"],
-      desc: "A Java Swing desktop application with a custom dark-themed UI, built for the Object-Oriented Paradigms module. Supports three user roles — Student, Admin, and Company — with full MySQL database integration via JDBC.",
-      year: "2026",
-      role: "Java GUI Developer & Database Integration Lead",
-      Context: "University Project",
-      fullDesc: "The University Placement Management System is a standalone desktop application built using Java Swing and MySQL, developed as part of the Object-Oriented Paradigms module. The system follows a clean 3-tier architecture separating the UI layer (Swing frames), DAO layer (JDBC PreparedStatements), and database layer (MySQL 8). It supports three distinct user roles: Students can register, manage academic profiles, browse and apply for job or placement opportunities, and track their application statuses. Placement Administrators can oversee all students and applications, update placement statuses, manage company listings, and filter data by course, branch, or status. Companies can post job and placement opportunities with eligibility criteria, manage their listings, view applicants per posting, and shortlist, offer, or reject candidates. The system enforces key business rules at the data layer — students cannot hold more than one accepted placement, seat availability is verified before applications are accepted, and cascading deletes maintain referential integrity. The entire UI is styled with a custom global dark theme applied via UIManager, ensuring consistent dark colors across all Swing components including dropdowns, dialogs, tables, and scroll panes.",
-      features: [
-        "Role-based login system for Students, Admins, and Companies",
-        "Student registration with full academic profile (course, branch, GPA, graduation year)",
-        "Job and placement browsing with type filter and double-click detail view",
-        "Eligibility-enforced application system with seat availability checks",
-        "Prevents students from holding more than one accepted placement simultaneously",
-        "Application status lifecycle: pending → shortlisted → offered → accepted / rejected",
-        "Admin dashboard with student search, status filtering, and placement management",
-        "Company portal for posting jobs, toggling listings, and managing applicants",
-        "Full CRUD operations on companies and job postings via admin panel",
-        "Custom global dark theme applied system-wide via UIManager overrides",
-        "7 navigable frames with parent-child frame relationships",
-        "MySQL database with 6 normalized tables and cascading referential integrity"
-      ],
-      techStack: ["Java", "Swing", "JDBC", "MySQL 8"],
-      links: { github: "https://github.com/Jenna-LHW/placement-management-system" },
-    },
-  ],
+  // Projects are loaded from Supabase — do not edit here
+  projects: [],
 };
 
 // ===== ROUTER =====
@@ -197,7 +164,6 @@ function navigate(target, projectId) {
 
   setTimeout(() => {
     initScrollAnimations();
-    if (target === "about") initSkillBars();
     if (target === "home" || target === "about") initTimeline();
   }, 60);
 }
@@ -237,10 +203,8 @@ function timelineHTML(items) {
 }
 
 function renderHome() {
-  // Hero name
   document.querySelector(".hero-title .name").textContent = DATA.name;
 
-  // Featured skills
   document.querySelector(".skills-grid").innerHTML = DATA.featuredSkills.map(s => `
     <div class="skill-card fade-in">
       <div class="skill-icon">${s.icon}</div>
@@ -248,33 +212,17 @@ function renderHome() {
       <div class="skill-desc">${s.desc}</div>
     </div>`).join("");
 
-  // Featured projects (first 3)
   document.getElementById("home-projects-grid").innerHTML = DATA.projects.slice(0, 3).map(projectCard).join("");
 
-  // Timeline
   document.getElementById("home-timeline").innerHTML = timelineHTML(DATA.experience);
 }
 
 function renderAbout() {
-  // Bio
   document.querySelector(".about-bio").innerHTML =
-  DATA.bio.split("\n\n").map(p => `<p>${p}</p>`).join("");
+    DATA.bio.split("\n\n").map(p => `<p>${p}</p>`).join("");
 
-  // Skill bars
-document.getElementById("skills-bars-wrap").innerHTML =
-  Object.entries(DATA.skills).map(([cat, items]) => `
-    <div class="skills-category">
-      <div class="skills-category-name">${cat}</div>
-      <div class="skill-chips-wrap">
-        ${items.map(skill => `<span class="skill-chip">${skill}</span>`).join("")}
-      </div>
-    </div>
-  `).join("");
-
-  // Timeline
   document.getElementById("about-timeline").innerHTML = timelineHTML(DATA.experience);
 
-  // Education
   document.getElementById("edu-list").innerHTML = DATA.education.map(e => `
     <div class="education-card fade-in">
       <div class="edu-year">${e.year}</div>
@@ -313,9 +261,9 @@ function renderProjectDetail(id) {
     <button class="detail-back fade-in" onclick="navigate('projects')">← Back to Projects</button>
 
     <div class="detail-hero fade-in">
-  <div class="detail-thumb">
-    <img src="${p.image}" alt="${p.title} Screenshot">
-  </div>
+      <div class="detail-thumb">
+        <img src="${p.image}" alt="${p.title} Screenshot">
+      </div>
       <div class="detail-meta">
         <div class="project-tags" style="margin-bottom:0.75rem">${p.tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>
         <h1 class="detail-title">${p.title}</h1>
@@ -424,11 +372,16 @@ function initTyped() {
 }
 
 // ===== INIT =====
-document.addEventListener("DOMContentLoaded", () => {
-  renderHome();
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // Render everything that doesn't need Supabase first
   renderAbout();
-  renderProjects();
   renderContact();
+
+  // Fetch projects from Supabase, then render anything that depends on them
+  await loadProjectsFromSupabase();
+  renderHome();
+  renderProjects();
 
   // Nav events
   document.querySelectorAll(".nav-links a[data-page]").forEach(link => {
@@ -441,57 +394,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Contact form
   document.getElementById("contact-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const form = document.getElementById("contact-form");
-  const submitBtn = form.querySelector("button[type='submit']");
-  const successEl = document.querySelector(".form-success");
+    const form = document.getElementById("contact-form");
+    const submitBtn = form.querySelector("button[type='submit']");
+    const successEl = document.querySelector(".form-success");
 
-  // Grab values
-  const name    = document.getElementById("cf-name").value.trim();
-  const email   = document.getElementById("cf-email").value.trim();
-  const subject = document.getElementById("cf-subject").value.trim();
-  const message = document.getElementById("cf-msg").value.trim();
+    const name    = document.getElementById("cf-name").value.trim();
+    const email   = document.getElementById("cf-email").value.trim();
+    const subject = document.getElementById("cf-subject").value.trim();
+    const message = document.getElementById("cf-msg").value.trim();
 
-  // Loading state
-  const originalText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = "Sending…";
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
 
-  try {
-    const res = await fetch("/.netlify/functions/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, subject, message }),
-    });
+    try {
+      const res = await fetch("/.netlify/functions/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      throw new Error(data.error || "Something went wrong. Please try again.");
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+
+      form.style.display = "none";
+      successEl.style.display = "block";
+
+    } catch (err) {
+      let errEl = document.getElementById("form-error-msg");
+      if (!errEl) {
+        errEl = document.createElement("p");
+        errEl.id = "form-error-msg";
+        errEl.style.cssText = "color:#dc2626;font-size:0.85rem;margin-top:0.75rem;text-align:center;";
+        submitBtn.insertAdjacentElement("afterend", errEl);
+      }
+      errEl.textContent = `⚠ ${err.message}`;
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
     }
-
-    // Success — hide form, show success message
-    form.style.display = "none";
-    successEl.style.display = "block";
-
-  } catch (err) {
-    // Show inline error without hiding the form
-    let errEl = document.getElementById("form-error-msg");
-    if (!errEl) {
-      errEl = document.createElement("p");
-      errEl.id = "form-error-msg";
-      errEl.style.cssText =
-        "color:#dc2626;font-size:0.85rem;margin-top:0.75rem;text-align:center;";
-      submitBtn.insertAdjacentElement("afterend", errEl);
-    }
-    errEl.textContent = `⚠ ${err.message}`;
-
-    // Re-enable button
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalText;
-  }
-});
+  });
 
   navigate("home");
   initTyped();
