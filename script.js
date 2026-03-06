@@ -137,7 +137,7 @@ featuredSkills: [
         "Custom-built administrative dashboard separate from Django’s default admin interface"
         ],
       techStack: ["Python", "Django", "HTML5", "CSS3", "JavaScript"],
-      links: { github: "https://github.com/Jenna-LHW/personal-website" },
+      links: { github: "https://github.com/Jenna-LHW/Finders-Keepers" },
     },
     {
       id: "placement-system",
