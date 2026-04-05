@@ -28,8 +28,17 @@
   display: grid;
   grid-template-columns: 1fr 1.6fr;
   gap: 28px;
-  padding-bottom: 60px;
+  padding-bottom: 10px; /* Reduced from 60px to bring footer up */
   align-items: start;
+}
+
+/* ── Contact left col ───────────────────────────────────────── */
+.contact-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2px;            /* This controls the gap between cards and avatar */
+  height: auto;         /* Changed from 100% to auto */
+  justify-content: flex-start;
 }
 
 /* ── Contact links (left) ───────────────────────────────────── */
@@ -58,7 +67,18 @@
   transform: translateY(-2px);
   border-color: rgba(0,0,0,.13);
 }
-.contact-link-card.no-link { cursor: default; }
+.contact-link-card.no-link {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  color: inherit;
+}
 .contact-link-card.no-link:hover {
   transform: none;
   box-shadow: var(--shadow-sm);
@@ -214,6 +234,22 @@
 }
 .toast.success { background: #1a1a1a; }
 .toast.error   { background: #c0392b; }
+
+/* ── Contact avatar ─────────────────────────────────────────── */
+.contact-avatar-wrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: visible;    /* Changed from hidden */
+  flex: none;           /* Stop it from trying to fill space */
+  margin-top: -30px;    /* Pull it slightly closer to the cards if needed */
+}
+.contact-avatar3 {
+  width: 280px;         /* Set a specific width so it doesn't scale too large */
+  height: auto;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 860px) {

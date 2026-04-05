@@ -38,7 +38,7 @@
 html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 body {
   font-family: var(--font-body);
-  background: linear-gradient(180deg, #ffffff 0%, #fff8f0 25%, var(--cream) 55%, var(--cream) 100%);
+  background: linear-gradient(180deg, #ffffff 15%, #fff8f0 25%, var(--cream) 55%, var(--cream) 100%);
   background-attachment: fixed;
   color: var(--black);
   min-height: 100vh;
