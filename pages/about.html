@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me · Jenna Li Hoi Wah</title>
+  <meta name="description" content="About Jenna Li Hoi Wah — Computer Science student, developer, and builder." />
+
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/about.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Home">
+        <img src="../assets/logo.png" alt="Jenna LHW Logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Page ─────────────────────────────────────────────── -->
+  <main class="page-wrapper">
+    <div class="container">
+
+      <!-- Profile hero -->
+      <section class="about-hero">
+        <div class="profile-card">
+          <div class="profile-avatar" aria-hidden="true">JL</div>
+          <div class="profile-info">
+            <h1>Jenna Li Hoi Wah</h1>
+            <p>CS Student @ UoM</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bio — full width -->
+      <div class="about-bio-row">
+        <section class="bio-section" aria-labelledby="bio-heading">
+          <div class="section-label" id="bio-heading">About Me</div>
+          <div id="bio-content">
+            <!-- Populated by about.js -->
+          </div>
+        </section>
+      </div>
+
+      <!-- Two-column grid: edu+exp left, skills right -->
+      <div class="about-grid">
+
+        <!-- ── LEFT COLUMN ──────────────────────────────── -->
+        <div class="about-left">
+
+          <!-- Experience -->
+          <section class="exp-section" aria-labelledby="exp-heading">
+            <div class="section-label" id="exp-heading">Experience</div>
+            <div class="exp-timeline" id="exp-list">
+              <!-- Populated by about.js -->
+            </div>
+          </section>
+
+          <!-- Education -->
+          <section class="edu-section" aria-labelledby="edu-heading">
+            <div class="section-label" id="edu-heading">Education</div>
+            <div id="edu-list">
+              <!-- Populated by about.js -->
+            </div>
+          </section>
+
+        </div><!-- /about-left -->
+
+        <!-- ── RIGHT COLUMN: Skills ──────────────────────── -->
+        <aside class="skills-section" aria-labelledby="skills-heading">
+          <div class="section-label" id="skills-heading">Skills</div>
+          <div id="skills-content">
+            <!-- Populated by about.js -->
+          </div>
+        </aside>
+
+      </div><!-- /about-grid -->
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+    </div>
+  </footer>
+
+  <!-- Scripts (order matters: client first, then page logic) -->
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/about.js"></script>
+
+</body>
+</html>

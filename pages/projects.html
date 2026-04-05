@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects · Jenna Li Hoi Wah</title>
+  <meta name="description" content="Projects built by Jenna Li Hoi Wah." />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/projects.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Home">
+        <img src="../assets/logo.png" alt="Jenna LHW Logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Page ─────────────────────────────────────────────── -->
+  <main class="page-wrapper">
+    <div class="container">
+
+      <!-- Hero -->
+      <section class="projects-hero">
+        <div class="section-label">My Work</div>
+        <h1>Projects</h1>
+        <p>A collection of things I've built.</p>
+      </section>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+
+        <!-- Search -->
+        <div class="filter-search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="filter-search" placeholder="Search by name or description…" aria-label="Search projects" />
+        </div>
+
+        <!-- Category -->
+        <div class="filter-select">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <select id="filter-category" aria-label="Filter by category">
+            <option value="">All Categories</option>
+            <option value="Web">Web</option>
+            <option value="Java">Java</option>
+            <option value="Others">Others</option>
+          </select>
+        </div>
+
+        <!-- Status -->
+        <div class="filter-select">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <select id="filter-status" aria-label="Filter by status">
+            <option value="">All Status</option>
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Archived">Archived</option>
+          </select>
+        </div>
+
+      </div><!-- /filter-bar -->
+
+      <!-- Results meta -->
+      <div class="results-meta">
+        <span class="results-count" id="results-count"></span>
+      </div>
+
+      <!-- Grid -->
+      <div class="projects-grid" id="projects-grid">
+        <!-- Populated by projects.js -->
+      </div>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/projects.js"></script>
+
+</body>
+</html>

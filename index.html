@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jenna Li Hoi Wah · Portfolio</title>
+  <meta name="description" content="Portfolio of Jenna Li Hoi Wah — CS Student, Full-Stack Developer." />
+
+  <!-- Google Fonts: Dancing Script for cursive greeting -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/home.css" />
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo" aria-label="Home">
+        <img src="assets/logo.png" alt="Jenna LHW Logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/about.html">About Me</a></li>
+        <li><a href="pages/projects.html">Projects</a></li>
+      </ul>
+      <a href="pages/contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Page ─────────────────────────────────────────────── -->
+  <main class="page-wrapper">
+    <div class="container">
+
+      <!-- ── HERO ───────────────────────────────────────────── -->
+      <section class="hero">
+
+        <!-- Floating cursive greeting -->
+        <div class="hero-greeting">Hey, there <span class="wave">👋</span></div>
+
+        <!-- Left: badge + name -->
+        <div class="hero-left">
+          <div class="hero-name">
+            <span>I am</span>
+            <span>Jenna</span>
+          </div>
+        </div>
+
+        <!-- Centre: avatar -->
+        <div class="hero-avatar">
+          <img src="assets/avatar.png" alt="Jenna Li Hoi Wah" />
+        </div>
+
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+        <!-- Right: badge -->
+        <div class="hero-right">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Available for internship
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ── STATS BAR ──────────────────────────────────────── -->
+      <div class="stats-bar" id="stats-bar">
+        <!-- Populated by home.js -->
+      </div>
+
+      <!-- ── SKILLS & EXPERTISE ─────────────────────────────── -->
+      <section class="home-section">
+        <div class="home-section-header">
+          <h2>Skills &amp; Expertise</h2>
+        </div>
+        <div class="expertise-grid" id="expertise-grid">
+          <!-- Populated by home.js -->
+        </div>
+        <div class="section-cta">
+          <a href="pages/about.html" class="btn-primary">Learn More About Me</a>
+        </div>
+      </section>
+
+      <!-- ── PROJECTS ───────────────────────────────────────── -->
+      <section class="home-section">
+        <div class="home-section-header">
+          <h2>Projects</h2>
+        </div>
+        <div class="projects-carousel-wrap">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous projects">
+            <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="projects-carousel" id="projects-carousel">
+            <!-- Populated by home.js -->
+          </div>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next projects">
+            <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="section-cta" style="margin-top:28px">
+          <a href="pages/projects.html" class="btn-primary">View All Projects</a>
+        </div>
+      </section>
+
+      <!-- ── LET'S TALK ─────────────────────────────────────── -->
+      <section class="lets-talk">
+        <h2>Let's Talk</h2>
+        <p>I'm currently looking for internships, collaborations, and real-world projects to grow my skills. Let's connect and see how we can work together.</p>
+        <a href="pages/contact.html" class="btn-cream">Contact Me</a>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/home.js"></script>
+
+</body>
+</html>

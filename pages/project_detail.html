@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project · Jenna Li Hoi Wah</title>
+  <meta name="description" content="Project details." />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/project_detail.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Home">
+        <img src="../assets/logo.png" alt="Jenna LHW Logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Page ─────────────────────────────────────────────── -->
+  <main class="page-wrapper">
+    <div class="container detail-wrapper">
+
+      <!-- Back button -->
+      <button class="back-btn" id="back-btn" aria-label="Back to projects">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Projects
+      </button>
+
+      <!-- Detail grid -->
+      <div class="detail-grid">
+        <aside class="detail-sidebar" id="detail-sidebar">
+          <!-- Populated by project-detail.js -->
+        </aside>
+        <div class="detail-main" id="detail-main">
+          <!-- Populated by project-detail.js -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/project_detail.js"></script>
+
+</body>
+</html>
