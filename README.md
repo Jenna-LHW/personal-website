@@ -16,7 +16,6 @@ This is the repository for my personal portfolio website. I built this to be ful
 | **Hosting** | Netlify |
 | **Email** | Netlify Functions + Resend API |
 | **Icons** | Devicon & Lucide Icons |
-| **Fonts** | DM Serif Display, DM Sans |
 
 ---
 
@@ -45,13 +44,3 @@ All content that changes—like my GPA, project status, or new skills—is manag
 * **`home_expertise`**: Defines the expertise cards on the landing page.
 * **`education` & `experience`**: Powers the timeline on my About page.
 * **`contact_links`**: Stores external URLs for GitHub, LinkedIn, and email.
-
----
-
-### Color Theme
-I chose a "Classic Light Brown" aesthetic to create a professional yet warm environment that stands out from typical dark-mode portfolios:
-
-* **Primary Background (Cream):** `#FEEBCF`
-* **Secondary Neutral (Off-White):** `#F7F6F2`
-* **Text & Accents:** `#0d0d0d`
-
