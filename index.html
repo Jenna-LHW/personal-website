@@ -6,9 +6,8 @@
   <title>Jenna Li Hoi Wah · Portfolio</title>
   <meta name="description" content="Portfolio of Jenna Li Hoi Wah — CS Student, Full-Stack Developer." />
 
-  <!-- Google Fonts: Dancing Script for cursive greeting -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/home.css" />
@@ -34,43 +33,42 @@
 
   <!-- ── Page ─────────────────────────────────────────────── -->
   <main class="page-wrapper">
-    <div class="container">
-
-      <!-- ── HERO ───────────────────────────────────────────── -->
-      <section class="hero">
-
-        <!-- Floating cursive greeting -->
-        <div class="hero-greeting">Hey, there <span class="wave">👋</span></div>
-
-        <!-- Left: badge + name -->
-        <div class="hero-left">
-          <div class="hero-name">
-            <span>I am</span>
-            <span>Jenna</span>
-          </div>
+    <!-- ── HERO ───────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Available for internship
         </div>
-
-        <!-- Centre: avatar -->
-        <div class="hero-avatar">
-          <img src="assets/avatar.png" alt="Jenna Li Hoi Wah" />
+        <h1 class="hero-name">
+          Hey, there <br>
+          I'm <em> Jenna</em>
+        </h1>
+        <p class="hero-sub">
+          I build clean, functional web &amp; app experiences.<br>
+          Currently studying Computer Science and looking for my next opportunity.
+        </p>
+        <div class="hero-actions">
+          <a href="pages/projects.html" class="hero-btn-primary">View My Work</a>
+          <a href="pages/contact.html" class="hero-btn-outline">Get In Touch</a>
         </div>
-
-        <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-        <!-- Right: badge -->
-        <div class="hero-right">
-          <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
-            Available for internship
-          </div>
+        <div class="hero-pills">
+          <span class="hero-pill">Java</span>
+          <span class="hero-pill">Django</span>
+          <span class="hero-pill">Python</span>
+          <span class="hero-pill">HTMl/CSS</span>
+          <span class="hero-pill">SQL</span>
         </div>
-
-      </section>
-
-      <!-- ── STATS BAR ──────────────────────────────────────── -->
-      <div class="stats-bar" id="stats-bar">
-        <!-- Populated by home.js -->
       </div>
+    </section>
+
+    <!-- ── STATS BAR ──────────────────────────────────────── -->
+    <div class="stats-bar" id="stats-bar">
+      <!-- Populated by home.js -->
+    </div>
+
+    <div class="container">
 
       <!-- ── SKILLS & EXPERTISE ─────────────────────────────── -->
       <section class="home-section">
@@ -119,7 +117,8 @@
   <!-- ── Footer ───────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
-      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+      <p class="footer-text"><span>Jenna Li Hoi Wah</span></p>
+      <p class="footer-right">© 2025 · Built with passion</p>
     </div>
   </footer>
 
