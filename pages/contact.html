@@ -6,10 +6,8 @@
   <title>Contact · Jenna Li Hoi Wah</title>
   <meta name="description" content="Get in touch with Jenna Li Hoi Wah." />
 
-  <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- Styles -->
   <link rel="stylesheet" href="../css/base.css" />
   <link rel="stylesheet" href="../css/contact.css" />
 </head>
@@ -30,14 +28,15 @@
 
   <!-- ── Page ─────────────────────────────────────────────── -->
   <main class="page-wrapper">
-    <div class="container">
 
-      <!-- Hero -->
-      <section class="contact-hero">
-        <div class="section-label">Get in touch</div>
-        <h1>Let's Talk</h1>
-        <p>Whether it's an opportunity, a question, or just a hello — my inbox is always open.</p>
-      </section>
+    <!-- Navy hero (full-bleed) -->
+    <section class="contact-hero">
+      <div class="section-label">Get in touch</div>
+      <h1>Let's Talk</h1>
+      <p>Whether it's an opportunity, a question, or just a hello — my inbox is always open.</p>
+    </section>
+
+    <div class="container">
 
       <!-- Two-column grid -->
       <div class="contact-grid">
@@ -47,9 +46,7 @@
           <div class="contact-links-section" id="contact-links">
             <!-- Populated by contact.js -->
           </div>
-          <div class="contact-avatar-wrap">
-            <img src="../assets/avatar3.png" alt="" class="contact-avatar3" aria-hidden="true" />
-          </div>
+
         </div>
 
         <!-- ── RIGHT: Contact form ───────────────────────── -->
@@ -59,43 +56,22 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="f-name">Your Name</label>
-                <input
-                  type="text"
-                  id="f-name"
-                  name="name"
-                  placeholder="Jane Smith"
-                  autocomplete="name"
-                />
+                <input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" />
               </div>
               <div class="form-group">
                 <label for="f-email">Email Address</label>
-                <input
-                  type="email"
-                  id="f-email"
-                  name="email"
-                  placeholder="jane@company.com"
-                  autocomplete="email"
-                />
+                <input type="email" id="f-email" name="email" placeholder="jane@company.com" autocomplete="email" />
               </div>
             </div>
 
             <div class="form-group">
               <label for="f-subject">Subject</label>
-              <input
-                type="text"
-                id="f-subject"
-                name="subject"
-                placeholder="Internship opportunity at …"
-              />
+              <input type="text" id="f-subject" name="subject" placeholder="Internship opportunity at …" />
             </div>
 
             <div class="form-group">
               <label for="f-message">Message</label>
-              <textarea
-                id="f-message"
-                name="message"
-                placeholder="Hi Jenna, I'd like to discuss…"
-              ></textarea>
+              <textarea id="f-message" name="message" placeholder="Hi Jenna, I'd like to discuss…"></textarea>
             </div>
 
             <button type="submit" class="submit-btn" id="submit-btn">
@@ -112,14 +88,14 @@
   <!-- ── Footer ───────────────────────────────────────────── -->
   <footer class="footer">
     <div class="container">
-      <p class="footer-text"><span>@Jenna LHW</span> &nbsp;|&nbsp; Built with passion</p>
+      <p class="footer-text"><span>Jenna Li Hoi Wah</span></p>
+      <p class="footer-right">© 2025 · Built with passion</p>
     </div>
   </footer>
 
   <!-- ── Toast ────────────────────────────────────────────── -->
   <div id="toast" class="toast" role="alert" aria-live="polite"></div>
 
-  <!-- Scripts -->
   <script src="../js/supabase-client.js"></script>
   <script src="../js/contact.js"></script>
 
