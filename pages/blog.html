@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog · Jenna Li Hoi Wah</title>
+  <meta name="description" content="Thoughts, learnings and write-ups by Jenna Li Hoi Wah." />
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/blog.css" />
+</head>
+<body>
+
+  <!-- ── Navbar ───────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="nav-logo" aria-label="Home">
+        <img src="../assets/logo.png" alt="Jenna LHW Logo">
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html" class="active">Blog</a></li>
+      </ul>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ── Page ─────────────────────────────────────────────── -->
+  <main class="page-wrapper">
+
+    <!-- Navy hero (matches projects page) -->
+    <section class="blog-hero">
+      <div class="container">
+        <div class="section-label">Writing</div>
+        <h1>Blog</h1>
+        <p>Thoughts on code, learning, and building things.</p>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <!-- Filter / search bar -->
+      <div class="filter-bar">
+        <div class="filter-search">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="filter-search" placeholder="Search posts…" aria-label="Search blog posts" />
+        </div>
+
+        <div class="filter-select">
+          <svg viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+          <select id="filter-tag" aria-label="Filter by tag">
+            <option value="">All Tags</option>
+            <!-- Populated by blog.js -->
+          </select>
+        </div>
+      </div>
+
+      <div class="results-meta">
+        <span class="results-count" id="results-count"></span>
+      </div>
+
+      <!-- Posts grid -->
+      <div class="blog-grid" id="blog-grid">
+        <!-- Populated by blog.js -->
+      </div>
+
+    </div><!-- /container -->
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text"><span>Jenna Li Hoi Wah</span></p>
+      <p class="footer-right">© 2025 · Built with passion</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/blog.js"></script>
+
+</body>
+</html>
