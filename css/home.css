@@ -46,10 +46,33 @@
   position: relative;
   z-index: 2;
   display: flex;
+  flex-direction: row;       /* Align columns horizontally */
+  align-items: center;       /* Vertically center text and image relative to each other */
+  justify-content: space-between; /* Pushes text to left, image to right */
+  gap: 48px;                 /* Adds space between text and image */
+  width: 100%; 
+}
+
+.hero-content {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 28px;
-  width: 100%; /* Ensures it spans the container width */
+  flex: 1;                   /* Lets the text area grow and take available space */
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;   /* Centers image inside its flex half */
+  animation: fadeUp .65s .4s ease both; /* Added fade-in animation for the image */
+}
+
+.hero-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 450px;         /* Prevents the image from getting overly massive */
+  object-fit: contain;
 }
 
 .hero-badge {

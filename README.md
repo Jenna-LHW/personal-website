@@ -44,3 +44,4 @@ All content that changes—like my GPA, project status, or new skills—is manag
 * **`home_expertise`**: Defines the expertise cards on the landing page.
 * **`education` & `experience`**: Powers the timeline on my About page.
 * **`contact_links`**: Stores external URLs for GitHub, LinkedIn, and email.
+* **`blog_posts`**: Stores my blog posts that I publish on the website.
