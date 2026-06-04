@@ -24,11 +24,30 @@ This is the repository for my personal portfolio website. I built this to be ful
 I organized the project to keep the logic separate from the styling, making it easier to scale as I add more features:
 
 * **`/index.html`**: The main entry point featuring the Hero section, live Stats, and Expertise cards.
-* **`/pages`**: Dedicated pages for my Bio (About), Project Gallery, and Contact form.
-* **`/css`**: Modular stylesheets, including `base.css` which handles my custom brown/tan design tokens.
-* **`/js`**: Scripts for fetching data from the Supabase API and handling UI interactions.
+* **`/pages`**: Dedicated pages for my Bio (About), Project Gallery, Blog, and Contact form.
+* **`/components`**: Shared HTML components — `navbar.html` and `footer.html` — injected into every page via `js/components.js`, so there's a single source of truth for both.
+* **`/css`**: Modular stylesheets, including `base.css` which handles global design tokens, the navbar (including the mobile hamburger menu), and the footer.
+* **`/js`**: Scripts for fetching data from the Supabase API and handling UI interactions. `components.js` handles loading the shared navbar and footer on every page.
 * **`/assets`**: Project media, including my custom 3D character avatar.
 * **`/netlify/functions`**: Serverless backend logic to securely handle email sent via the contact form.
+
+---
+
+### Shared Components
+
+The navbar and footer are defined once in `/components` and loaded dynamically on every page using the Fetch API. To update either globally, edit only the relevant file:
+
+* **`/components/navbar.html`**: Navigation links, logo, Contact CTA, and mobile hamburger button.
+* **`/components/footer.html`**: Footer text and copyright line.
+* **`/js/components.js`**: Fetches and injects both components, resolves paths based on page depth, sets the active nav link, and handles the hamburger toggle.
+
+> **Note:** Because components are loaded via `fetch`, the site must be served over HTTP (not opened directly as a `file://` URL).
+
+---
+
+### Mobile Navigation
+
+The navbar is fully responsive. On screens wider than 560px the standard nav links and Contact button are shown. On smaller screens those are replaced by a hamburger button that opens a dropdown menu, including the Contact link.
 
 ---
 
