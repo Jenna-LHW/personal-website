@@ -143,14 +143,9 @@
   const modalTitle     = document.getElementById('form-modal-title');
   const modalText      = document.getElementById('form-modal-text');
 
-  const ALL_MASCOTS = [
-    'glitch-mascot-1.png','glitch-mascot-2.png','glitch-mascot-3.png','glitch-mascot-4.png',
-    'glitch-mascot-5.png','glitch-mascot-6.png','glitch-mascot-7.png'
-  ];
-
   function showFormModal(success) {
     modalCard.className = 'modal-card ' + (success ? 'is-success' : 'is-error');
-    const mascot = ALL_MASCOTS[Math.floor(Math.random() * ALL_MASCOTS.length)];
+    const mascot = success ? 'glitch-mascot-2.png' : 'glitch-mascot-3.png';
     modalIcon.innerHTML = `<img src="assets/${mascot}" alt="The Glitch">`;
     modalTitle.textContent = success ? 'Message sent.' : 'Something glitched.';
     modalText.textContent = success
