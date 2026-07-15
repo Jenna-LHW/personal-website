@@ -71,11 +71,25 @@
   </button>
 </div>
 
+<button class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <img src="assets/glitch-mascot-1.png" alt="The Glitch, pointing up">
+  <span class="back-to-top-tip">↑ back to top</span>
+</button>
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/supabase-client.js"></script>
 <script src="assets/script.js"></script>
 <script src="assets/blog_post.js"></script>
+<script>
+  const backToTopBtn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTopBtn.classList.toggle('show', window.scrollY > 400);
+  });
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
 <style>
   .post-wrapper{max-width:760px;}
   .back-btn{
@@ -86,6 +100,35 @@
   }
   .back-btn:hover{color:var(--white);border-color:var(--cyan);}
   .back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;}
+
+  .back-to-top{
+    position:fixed;left:22px;bottom:22px;z-index:65;
+    width:60px;height:60px;border-radius:50%;
+    border:1px solid var(--navy-line);background:var(--navy-mid);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;
+    box-shadow:0 0 20px rgba(76,230,255,.2);
+    opacity:0;visibility:hidden;transform:translateY(10px);
+    transition:opacity .3s ease, transform .3s ease, visibility .3s ease, border-color .2s ease;
+  }
+  .back-to-top.show{opacity:1;visibility:visible;transform:translateY(0);}
+  .back-to-top:hover{border-color:var(--cyan);}
+  .back-to-top img{width:78%;height:auto;pointer-events:none;}
+  .back-to-top-tip{
+    position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(4px);
+    background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--cyan);
+    font-family:var(--font-mono);font-size:11.5px;white-space:nowrap;padding:7px 12px;
+    clip-path:var(--edge);opacity:0;pointer-events:none;
+    transition:opacity .18s ease, transform .18s ease;
+  }
+  .back-to-top-tip::after{
+    content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:5px solid transparent;border-top-color:var(--navy-line);
+  }
+  .back-to-top:hover .back-to-top-tip{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  @media (max-width:640px){
+    .back-to-top{left:14px;bottom:14px;width:50px;height:50px;}
+  }
 
   .post-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
   .post-tag{font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);border:1px solid var(--navy-line);padding:4px 10px;}
