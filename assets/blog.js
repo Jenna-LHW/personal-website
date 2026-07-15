@@ -14,6 +14,15 @@ function formatDate(iso) {
   });
 }
 
+function dateParts(iso) {
+  const d = new Date(iso);
+  return {
+    mon: d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase(),
+    day: d.toLocaleDateString('en-US', { day: '2-digit' }),
+    year: d.getFullYear()
+  };
+}
+
 function readingTime(markdown) {
   if (!markdown) return '1 min read';
   const words = markdown.trim().split(/\s+/).length;
@@ -23,8 +32,8 @@ function readingTime(markdown) {
 
 /* ── Skeletons ──────────────────────────────────────────────── */
 function showSkeletons() {
-  el('blog-grid').innerHTML = [1,2,3,4,5,6].map(() =>
-    `<div class="skeleton skeleton-blog-card"></div>`).join('');
+  el('blog-grid').innerHTML = [1,2,3,4,5].map(() =>
+    `<div class="skeleton skeleton-post-row"></div>`).join('');
 }
 
 /* ── Populate tag filter ────────────────────────────────────── */
@@ -57,36 +66,18 @@ function renderPosts(posts) {
   }
 
   grid.innerHTML = posts.map(p => {
-    const coverHTML = p.cover_url
-      ? `<div class="blog-card-cover">
-           <img src="${p.cover_url}" alt="${p.title}" loading="lazy"
-                onerror="this.parentElement.style.display='none'">
-         </div>`
-      : '';
-
-    const tagsHTML = (p.tags || []).length
-      ? `<div class="blog-card-tags">
-           ${p.tags.map(t => `<span class="blog-card-tag">${t}</span>`).join('')}
-         </div>`
-      : '';
+    const dp = dateParts(p.published_at || p.created_at);
+    const tag = (p.tags || [])[0];
 
     return `
-      <a class="blog-card" href="blog_post.html?id=${p.id}" aria-label="${p.title}">
-        ${coverHTML}
-        <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span class="blog-card-date">${formatDate(p.published_at || p.created_at)}</span>
-            <span class="blog-card-meta-dot"></span>
-            <span class="blog-card-read-time">${readingTime(p.content)}</span>
-          </div>
-          <div class="blog-card-title">${p.title}</div>
-          <div class="blog-card-excerpt">${p.excerpt || ''}</div>
-          ${tagsHTML}
-          <div class="blog-card-footer">
-            Read more
-            <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </div>
+      <a class="post-row" href="blog_post.html?id=${p.id}" aria-label="${p.title}">
+        <div class="post-date"><span>${dp.mon}</span><b>${dp.day}</b><span>${dp.year}</span></div>
+        <div class="post-body">
+          <h3>${p.title}</h3>
+          <p>${p.excerpt || ''}</p>
+          <div class="post-meta">${readingTime(p.content)}${tag ? ' · ' + tag : ''}</div>
         </div>
+        <span class="post-arrow">→</span>
       </a>`;
   }).join('');
 }

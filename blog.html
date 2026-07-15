@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-glitch-lines='["jenna writes when she is not compiling.","warning: contains opinions about semicolons.","I proofread these. I am not good at it."]'>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="assets/glitch-mascot-2.png" alt="The Glitch mascot"><span>jenna<b>.exe</b></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">~/home</a></li>
+      <li><a href="about.html">~/about</a></li>
+      <li><a href="projects.html">~/projects</a></li>
+      <li><a href="blog.html" class="active">~/blog</a></li>
+      <li><a href="contact.html">~/contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-top:150px;">
+    <div class="wrap">
+      <div class="glitch-intro reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">Notes from Jenna's brain, lightly edited by me for drama.</div>
+      </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">stream: /blog/entries</p>
+        <h1 class="glitch" data-text="FIELD NOTES" style="font-size:clamp(30px,4.4vw,46px);">FIELD NOTES</h1>
+        <p style="margin-top:14px;color:var(--slate);">Short write-ups on coursework, side projects, and things I broke on purpose to understand better.</p>
+      </div>
+
+      <div class="filter-bar reveal" role="group" aria-label="Filter posts">
+        <div class="filter-search-wrap">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="filter-search" placeholder="search posts..." aria-label="Search blog posts">
+        </div>
+        <div class="filter-select-wrap">
+          <select id="filter-tag" aria-label="Filter by tag">
+            <option value="">all tags</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="results-meta reveal"><span id="results-count"></span></div>
+
+      <div class="post-list" id="blog-grid">
+        <!-- Populated by assets/blog.js from Supabase -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<div class="companion" aria-live="polite">
+  <div class="companion-bubble"></div>
+  <button class="companion-avatar" aria-label="Talk to The Glitch">
+    <span class="companion-ping"></span>
+    <img src="assets/glitch-mascot-2.png" alt="">
+  </button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script src="assets/blog.js"></script>
+<style>
+  /* ---- filter bar (shared look with projects page) ---- */
+  .filter-bar{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px;}
+  .filter-search-wrap{
+    display:flex;align-items:center;gap:10px;flex:1 1 260px;
+    border:1px solid var(--navy-line);background:var(--navy-mid);padding:11px 16px;clip-path:var(--edge);
+  }
+  .filter-search-wrap svg{width:16px;height:16px;flex:none;stroke:var(--slate-dim);fill:none;stroke-width:2;}
+  .filter-search-wrap input{
+    background:none;border:none;outline:none;color:var(--white);
+    font-family:var(--font-mono);font-size:13px;width:100%;
+  }
+  .filter-search-wrap input::placeholder{color:var(--slate-dim);}
+  .filter-select-wrap{
+    border:1px solid var(--navy-line);background:var(--navy-mid);padding:11px 14px;clip-path:var(--edge);
+  }
+  .filter-select-wrap select{
+    background:none;border:none;outline:none;color:var(--slate);
+    font-family:var(--font-mono);font-size:12.5px;cursor:pointer;
+  }
+  .filter-select-wrap select option{background:var(--navy-mid);color:var(--white);}
+  .results-meta{font-family:var(--font-mono);font-size:12px;color:var(--slate-dim);margin-bottom:20px;}
+
+  /* ---- post list (rendered by assets/blog.js) ---- */
+  .post-list{position:relative;border-top:1px solid var(--navy-line);padding-left:22px;}
+  .post-list::before{
+    content:'';position:absolute;left:0;top:0;bottom:0;width:1px;
+    background:linear-gradient(180deg, var(--cyan), var(--navy-line) 70%);opacity:.5;
+  }
+  .post-row{
+    position:relative;display:grid;grid-template-columns:80px 1fr 24px;gap:28px;align-items:center;
+    padding:28px 6px;border-bottom:1px solid var(--navy-line);transition:background .2s;
+  }
+  .post-row:hover{background:rgba(76,230,255,.04);}
+  .post-row:hover .post-arrow{transform:translateX(6px);color:var(--cyan);}
+  .post-row::before{
+    content:'';position:absolute;left:-22px;top:50%;width:6px;height:6px;background:var(--navy-deep);
+    border:1px solid var(--navy-line);transform:translateY(-50%) rotate(45deg);transition:border-color .2s, background .2s;
+  }
+  .post-row:hover::before{border-color:var(--cyan);background:var(--cyan);}
+  .post-date{font-family:var(--font-mono);text-align:center;color:var(--slate-dim);font-size:11px;line-height:1.5;}
+  .post-date b{display:block;font-size:22px;color:var(--cyan);font-family:var(--font-display);}
+  .post-body h3{font-size:19px;margin-bottom:8px;font-weight:600;font-family:var(--font-display);}
+  .post-body p{color:var(--slate);font-size:14.5px;max-width:640px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .post-meta{margin-top:10px;font-family:var(--font-mono);font-size:11.5px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.05em;}
+  .post-arrow{color:var(--slate-dim);transition:all .2s;font-size:18px;}
+
+  .empty-state,.error-state{
+    text-align:center;padding:60px 20px;color:var(--slate-dim);
+    font-family:var(--font-mono);font-size:13.5px;
+  }
+  .empty-state span,.error-state span{font-size:28px;display:block;margin-bottom:12px;}
+
+  .skeleton{background:linear-gradient(90deg, var(--navy-mid) 25%, var(--navy-line) 50%, var(--navy-mid) 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .skeleton-post-row{height:96px;margin-bottom:2px;}
+
+  @media (max-width:700px){
+    .post-list{padding-left:14px;}
+    .post-row{grid-template-columns:56px 1fr;}
+    .post-arrow{display:none;}
+  }
+  @media (max-width:640px){.filter-bar{flex-direction:column;}}
+</style>
+</body>
+</html>

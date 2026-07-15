@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-glitch-lines='["say hi. I will relay the message... eventually.","no bots here, just one overly enthusiastic pixel creature.","she actually reads these, promise."]'>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="assets/glitch-mascot-2.png" alt="The Glitch mascot"><span>jenna<b>.exe</b></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">~/home</a></li>
+      <li><a href="about.html">~/about</a></li>
+      <li><a href="projects.html">~/projects</a></li>
+      <li><a href="blog.html">~/blog</a></li>
+      <li><a href="contact.html" class="active">~/contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section contact-hero" style="padding-top:150px;">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <div class="glitch-intro">
+          <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+          <div class="bubble">Go on, say hello. I promise to only glitch <b>a little</b>.</div>
+        </div>
+        <p class="eyebrow">connection: /contact</p>
+        <h1 class="glitch" data-text="LET'S TALK." style="font-size:clamp(32px,5vw,54px);">LET'S TALK.</h1>
+        <p style="margin-top:16px;color:var(--slate);max-width:440px;">
+          Got an opportunity, a project idea, or a question about how a pixel creature ended up
+          running my portfolio? The form goes straight to my inbox — no bots reading it first.
+        </p>
+
+        <form class="contact-form" id="contact-form">
+          <div class="field">
+            <label for="name">name</label>
+            <input id="name" type="text" placeholder="Glitch" required>
+          </div>
+          <div class="field">
+            <label for="email">email</label>
+            <input id="email" type="email" placeholder="Glitch@gmail.com" required>
+          </div>
+          <div class="field">
+            <label for="message">message</label>
+            <textarea id="message" rows="5" placeholder="Say something nice, or weird, or both." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" id="contact-submit">send transmission <span class="arrow">→</span></button>
+        </form>
+      </div>
+
+      <div class="reveal contact-side">
+        <img src="assets/glitch-mascot-5.png" alt="The Glitch waving hello" class="mascot-float">
+        <div class="contact-links module">
+          <p class="eyebrow" style="margin-bottom:16px;">direct lines</p>
+          <div id="contact-links-list">
+            <div class="skeleton skeleton-line wide" style="height:20px;"></div>
+            <div class="skeleton skeleton-line wide" style="height:20px;margin-top:14px;"></div>
+            <div class="skeleton skeleton-line mid" style="height:20px;margin-top:14px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<div class="companion" aria-live="polite">
+  <div class="companion-bubble"></div>
+  <button class="companion-avatar" aria-label="Talk to The Glitch">
+    <span class="companion-ping"></span>
+    <img src="assets/glitch-mascot-2.png" alt="">
+  </button>
+</div>
+
+<div class="modal-overlay" id="form-modal" role="dialog" aria-modal="true">
+  <div class="modal-card" id="form-modal-card">
+    <div class="modal-icon" id="form-modal-icon"></div>
+    <h3 class="modal-title" id="form-modal-title"></h3>
+    <p class="modal-text" id="form-modal-text"></p>
+    <button class="btn modal-close" id="form-modal-close">close</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script>
+  /* ── Contact links: loaded from `contact_links` table ────────────
+     expected schema: contact_links(id, label, value, href, icon, sort_order)
+  ─────────────────────────────────────────────────────────────── */
+  async function loadContactLinks() {
+    const container = document.getElementById('contact-links-list');
+    const { data, error } = await db
+      .from('contact_links')
+      .select('*')
+      .order('sort_order');
+
+    if (error || !data?.length) {
+      container.innerHTML = `<p style="font-family:var(--font-mono);font-size:13px;color:var(--slate-dim);">Could not load contact links.</p>`;
+      return;
+    }
+
+    container.innerHTML = data.map(item => {
+      const isLink = !!item.href;
+      return isLink
+        ? `<a href="${item.href}" class="contact-line" target="_blank" rel="noopener noreferrer">${item.value}</a>`
+        : `<div class="contact-line">${item.value}</div>`;
+    }).join('');
+  }
+
+  /* ── Contact form: insert into Supabase `messages` table ────────
+     expected schema: messages(id uuid pk default gen_random_uuid(),
+       name text, email text, message text, created_at timestamptz default now())
+  ─────────────────────────────────────────────────────────────── */
+  const contactForm = document.getElementById('contact-form');
+  const modal        = document.getElementById('form-modal');
+  const modalCard     = document.getElementById('form-modal-card');
+  const modalIcon      = document.getElementById('form-modal-icon');
+  const modalTitle     = document.getElementById('form-modal-title');
+  const modalText      = document.getElementById('form-modal-text');
+
+  const ALL_MASCOTS = [
+    'glitch-mascot-1.png','glitch-mascot-2.png','glitch-mascot-3.png','glitch-mascot-4.png',
+    'glitch-mascot-5.png','glitch-mascot-6.png','glitch-mascot-7.png'
+  ];
+
+  function showFormModal(success) {
+    modalCard.className = 'modal-card ' + (success ? 'is-success' : 'is-error');
+    const mascot = ALL_MASCOTS[Math.floor(Math.random() * ALL_MASCOTS.length)];
+    modalIcon.innerHTML = `<img src="assets/${mascot}" alt="The Glitch">`;
+    modalTitle.textContent = success ? 'Message sent.' : 'Something glitched.';
+    modalText.textContent = success
+      ? 'Transmission received — Jenna (and I) will get back to you soon.'
+      : "That didn't go through. Check your connection and try again.";
+    modal.classList.add('show');
+  }
+
+  document.getElementById('form-modal-close').addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+
+  loadContactLinks();
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('contact-submit');
+    const original = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'sending...';
+
+    const payload = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      message: document.getElementById('message').value.trim()
+    };
+
+    try {
+      const { error } = await db.from('messages').insert([payload]);
+      if (error) throw error;
+      showFormModal(true);
+      contactForm.reset();
+    } catch (err) {
+      console.error(err);
+      showFormModal(false);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = original;
+    }
+  });
+</script>
+<style>
+  .contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:start;}
+  .contact-form{margin-top:36px;display:flex;flex-direction:column;gap:18px;max-width:440px;}
+  .field label{
+    display:block;font-family:var(--font-mono);font-size:12px;color:var(--slate-dim);
+    text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;
+  }
+  .field input,.field textarea{
+    width:100%;background:var(--navy-mid);border:1px solid var(--navy-line);color:var(--white);
+    padding:12px 14px;font-family:var(--font-body);font-size:14.5px;clip-path:var(--edge);resize:vertical;
+    transition:border-color .2s;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--cyan);outline:none;}
+  .field input::placeholder,.field textarea::placeholder{color:var(--slate-dim);}
+  .form-note{font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);margin-top:-4px;}
+
+  .contact-side{text-align:center;}
+  .contact-side img{max-width:280px;margin:0 auto 20px;}
+  .contact-links{text-align:left;}
+  .contact-line{display:block;padding:10px 0;border-bottom:1px solid var(--navy-line);font-family:var(--font-mono);font-size:13.5px;color:var(--slate);transition:color .2s;}
+  .contact-line:last-child{border-bottom:none;}
+  .contact-line:hover{color:var(--cyan);}
+
+  @media (max-width:900px){
+    .contact-grid{grid-template-columns:1fr;}
+    .contact-side{order:-1;}
+    .contact-side img{max-width:180px;}
+  }
+</style>
+</body>
+</html>

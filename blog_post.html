@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-glitch-lines='["I helped proofread this one. mostly.","grab a coffee, this one has words in it.","click back to blog whenever you are done reading."]'>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="assets/glitch-mascot-2.png" alt="The Glitch mascot"><span>jenna<b>.exe</b></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">~/home</a></li>
+      <li><a href="about.html">~/about</a></li>
+      <li><a href="projects.html">~/projects</a></li>
+      <li><a href="blog.html" class="active">~/blog</a></li>
+      <li><a href="contact.html">~/contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-top:150px;">
+    <div class="wrap post-wrapper">
+
+      <button class="back-btn" id="back-btn">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        back to blog
+      </button>
+
+      <div class="glitch-intro reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">Settle in — here's the full entry.</div>
+      </div>
+
+      <div class="post-layout" id="post-layout">
+        <!-- Populated by assets/blog_post.js -->
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<div class="companion" aria-live="polite">
+  <div class="companion-bubble"></div>
+  <button class="companion-avatar" aria-label="Talk to The Glitch">
+    <span class="companion-ping"></span>
+    <img src="assets/glitch-mascot-2.png" alt="">
+  </button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script src="assets/blog_post.js"></script>
+<style>
+  .post-wrapper{max-width:760px;}
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+    background:none;border:1px solid var(--navy-line);color:var(--slate);
+    font-family:var(--font-mono);font-size:12.5px;padding:9px 16px;cursor:pointer;
+    clip-path:var(--edge);transition:all .2s;
+  }
+  .back-btn:hover{color:var(--white);border-color:var(--cyan);}
+  .back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;}
+
+  .post-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .post-tag{font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);border:1px solid var(--navy-line);padding:4px 10px;}
+  .post-title{font-size:clamp(28px,4vw,42px);margin-bottom:14px;}
+  .post-meta{display:flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:12px;color:var(--slate-dim);text-transform:uppercase;letter-spacing:.05em;}
+  .post-meta-dot{width:3px;height:3px;background:var(--slate-dim);border-radius:50%;}
+
+  .post-cover{margin-top:28px;border:1px solid var(--navy-line);clip-path:var(--edge);overflow:hidden;}
+  .post-cover img{width:100%;display:block;}
+
+  .post-divider{height:1px;background:var(--navy-line);margin:30px 0;}
+
+  .post-body{color:var(--slate);font-size:16px;line-height:1.75;}
+  .post-body h2{color:var(--white);font-size:24px;margin:34px 0 14px;}
+  .post-body h3{color:var(--white);font-size:19px;margin:26px 0 12px;}
+  .post-body p{margin-bottom:16px;}
+  .post-body a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;}
+  .post-body img{max-width:100%;border:1px solid var(--navy-line);clip-path:var(--edge);margin:20px 0;}
+  .post-body code{
+    font-family:var(--font-mono);font-size:13.5px;background:var(--navy-mid);
+    padding:2px 6px;color:var(--cyan-soft);
+  }
+  .post-body pre{
+    background:var(--navy-mid);border:1px solid var(--navy-line);padding:18px 20px;
+    overflow-x:auto;margin:20px 0;clip-path:var(--edge);
+  }
+  .post-body pre code{background:none;padding:0;color:var(--white);}
+  .post-body ul,.post-body ol{padding-left:22px;margin-bottom:16px;}
+  .post-body li{margin-bottom:8px;}
+  .post-body blockquote{
+    border-left:2px solid var(--cyan);padding-left:18px;margin:20px 0;color:var(--slate-dim);font-style:italic;
+  }
+
+  .not-found{text-align:center;padding:100px 20px;}
+  .not-found h2{font-size:24px;margin-bottom:12px;}
+  .not-found p{color:var(--slate);margin-bottom:18px;}
+  .not-found a{color:var(--cyan);font-family:var(--font-mono);font-size:13px;}
+
+  .skeleton{background:linear-gradient(90deg, var(--navy-mid) 25%, var(--navy-line) 50%, var(--navy-mid) 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;border:1px solid var(--navy-line);}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .post-skeleton-header{height:90px;clip-path:var(--edge);margin-bottom:20px;}
+  .post-skeleton-body{height:420px;clip-path:var(--edge);}
+</style>
+</body>
+</html>

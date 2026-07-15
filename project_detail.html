@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-glitch-lines='["this is one I actually remember watching Jenna build.","yes, I read the whole readme.","go on, click back to projects when you are done."]'>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="assets/glitch-mascot-2.png" alt="The Glitch mascot"><span>jenna<b>.exe</b></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">~/home</a></li>
+      <li><a href="about.html">~/about</a></li>
+      <li><a href="projects.html">~/projects</a></li>
+      <li><a href="blog.html">~/blog</a></li>
+      <li><a href="contact.html">~/contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <section class="section" style="padding-top:150px;">
+    <div class="wrap detail-wrapper">
+
+      <button class="back-btn" id="back-btn">
+        <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        back to projects
+      </button>
+
+      <div class="glitch-intro reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">Let me pull up the full file on this one.</div>
+      </div>
+
+      <div class="detail-grid">
+        <aside class="detail-sidebar" id="detail-sidebar">
+          <!-- Populated by assets/project_detail.js -->
+        </aside>
+        <div class="detail-main" id="detail-main">
+          <!-- Populated by assets/project_detail.js -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<div class="companion" aria-live="polite">
+  <div class="companion-bubble"></div>
+  <button class="companion-avatar" aria-label="Talk to The Glitch">
+    <span class="companion-ping"></span>
+    <img src="assets/glitch-mascot-2.png" alt="">
+  </button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script src="assets/project_detail.js"></script>
+<style>
+  .detail-wrapper{max-width:1080px;}
+  .back-btn{
+    display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+    background:none;border:1px solid var(--navy-line);color:var(--slate);
+    font-family:var(--font-mono);font-size:12.5px;padding:9px 16px;cursor:pointer;
+    clip-path:var(--edge);transition:all .2s;
+  }
+  .back-btn:hover{color:var(--white);border-color:var(--cyan);}
+  .back-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;}
+
+  .detail-grid{display:grid;grid-template-columns:340px 1fr;gap:30px;align-items:start;margin-top:10px;}
+
+  .detail-screenshot{border:1px solid var(--navy-line);clip-path:var(--edge);overflow:hidden;aspect-ratio:4/3;}
+  .detail-screenshot img{width:100%;height:100%;object-fit:cover;}
+
+  .sidebar-card{
+    margin-top:18px;padding:20px;border:1px solid var(--navy-line);
+    background:linear-gradient(180deg, rgba(18,26,66,.5), rgba(10,15,43,.35));clip-path:var(--edge);
+  }
+  .sidebar-card-title{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:14px;}
+  .sidebar-status-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:13.5px;}
+  .sidebar-status-key{color:var(--slate-dim);font-family:var(--font-mono);font-size:12px;}
+  .sidebar-status-val{color:var(--white);}
+  .status-pill{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border:1px solid var(--navy-line);}
+  .pill-completed{color:var(--cyan);border-color:var(--cyan);}
+  .pill-inprogress{color:#ffd166;border-color:#ffd166;}
+  .pill-archived{color:var(--slate-dim);}
+  .sidebar-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .sidebar-tag{
+    font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);
+    border:1px solid var(--navy-line);padding:4px 10px;
+    transition:color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease;
+  }
+  .sidebar-tag:hover{
+    color:var(--white);border-color:var(--cyan);
+    background:rgba(76,230,255,.1);transform:translateY(-2px);
+  }
+
+  .detail-category-label{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--cyan);margin-bottom:10px;}
+  .detail-title{font-size:clamp(26px,3.6vw,38px);}
+  .detail-divider{height:1px;background:var(--navy-line);margin:26px 0;}
+  .detail-section-label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-dim);margin-bottom:14px;}
+  .detail-description p{color:var(--slate);font-size:15px;margin-bottom:14px;}
+  .features-list{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .features-list li{position:relative;padding-left:22px;color:var(--slate);font-size:14.5px;}
+  .features-list li::before{content:'▸';position:absolute;left:0;color:var(--cyan);}
+  .detail-links{display:flex;gap:14px;flex-wrap:wrap;}
+  .link-btn{
+    display:inline-flex;align-items:center;gap:9px;padding:11px 20px;
+    background:var(--cyan);color:var(--navy-deep);font-family:var(--font-mono);
+    font-size:12.5px;font-weight:600;clip-path:var(--edge);transition:transform .2s;
+  }
+  .link-btn:hover{transform:translateY(-2px);}
+  .link-btn svg{width:16px;height:16px;fill:none;stroke:var(--navy-deep);stroke-width:2;}
+
+  .not-found{text-align:center;padding:100px 20px;}
+  .not-found h2{font-size:24px;margin-bottom:12px;}
+  .not-found p{color:var(--slate);margin-bottom:18px;}
+  .not-found a{color:var(--cyan);font-family:var(--font-mono);font-size:13px;}
+
+  .skeleton{background:linear-gradient(90deg, var(--navy-mid) 25%, var(--navy-line) 50%, var(--navy-mid) 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;border:1px solid var(--navy-line);}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .skeleton-screenshot{aspect-ratio:4/3;clip-path:var(--edge);}
+  .skeleton-sidebar-card{height:120px;margin-top:18px;clip-path:var(--edge);}
+  .skeleton-main{height:420px;clip-path:var(--edge);}
+
+  @media (max-width:800px){.detail-grid{grid-template-columns:1fr;}}
+</style>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-glitch-lines='["this is the human behind me.","she debugged me into existence, mostly.","fun fact: I was originally a CSS typo that she kept."]'>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="brand"><img src="assets/glitch-mascot-2.png" alt="The Glitch mascot"><span>jenna<b>.exe</b></span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">~/home</a></li>
+      <li><a href="about.html" class="active">~/about</a></li>
+      <li><a href="projects.html">~/projects</a></li>
+      <li><a href="blog.html">~/blog</a></li>
+      <li><a href="contact.html">~/contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- BIO -->
+  <section class="section" style="padding-top:150px;">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <div class="glitch-intro">
+          <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+          <div class="bubble">Let me introduce you to <b>Jenna</b> — the human who built me, one commit at a time.</div>
+        </div>
+        <p class="eyebrow">file: /about/readme.log</p>
+        <h1 class="glitch" data-text="A FEW LINES ABOUT ME" style="font-size:clamp(30px,4.4vw,46px);">A FEW LINES ABOUT ME</h1>
+        <div class="bio-text" id="bio-content">
+          <div class="skeleton skeleton-line wide"></div>
+          <div class="skeleton skeleton-line wide"></div>
+          <div class="skeleton skeleton-line mid"></div>
+        </div>
+      </div>
+      <div class="reveal about-mascot">
+        <img src="assets/glitch-mascot-7.png" alt="The Glitch waving" class="mascot-float">
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="glitch-intro intro-right reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">Rewinding a bit — here's where <b>Jenna's</b> fundamentals actually came from.</div>
+      </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">log: education</p>
+        <h2>Where the fundamentals came from</h2>
+      </div>
+      <div class="timeline" id="education-list">
+        <div class="skeleton skeleton-tl-item"></div>
+        <div class="skeleton skeleton-tl-item"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="glitch-intro reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">Next up: the toolbox. <b>I</b> personally tested most of these icons for accuracy. Mostly.</div>
+      </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">log: skills</p>
+        <h2>Tools that don't glitch on me (usually)</h2>
+      </div>
+
+      <div class="skills-card module reveal">
+        <p class="skills-card-title">SKILLS</p>
+        <div class="skills-columns" id="skills-columns">
+          <div class="skeleton skeleton-skills-col"></div>
+          <div class="skeleton skeleton-skills-col"></div>
+          <div class="skeleton skeleton-skills-col"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="glitch-intro intro-right reveal">
+        <img src="assets/glitch-mascot-2.png" alt="The Glitch">
+        <div class="bubble">And finally — where <b>Jenna's</b> actually put all of this to use in the wild.</div>
+      </div>
+      <div class="section-head reveal">
+        <p class="eyebrow">log: experience</p>
+        <h2>Where I've spent my hours so far</h2>
+      </div>
+      <div class="timeline" id="experience-list">
+        <div class="skeleton skeleton-tl-item"></div>
+        <div class="skeleton skeleton-tl-item"></div>
+        <div class="skeleton skeleton-tl-item"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<div class="companion" aria-live="polite">
+  <div class="companion-bubble"></div>
+  <button class="companion-avatar" aria-label="Talk to The Glitch">
+    <span class="companion-ping"></span>
+    <img src="assets/glitch-mascot-2.png" alt="">
+  </button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script src="assets/about.js"></script>
+<style>
+  .about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:60px;align-items:center;}
+  .bio-text{margin-top:22px;color:var(--slate);font-size:16.5px;max-width:560px;}
+  .bio-text p + p{margin-top:14px;}
+  .bio-subheading{
+    font-family:var(--font-mono);font-size:12px;color:var(--cyan);text-transform:uppercase;
+    letter-spacing:.08em;margin:20px 0 6px;
+  }
+  .bio-subheading:first-child{margin-top:0;}
+  .about-mascot{text-align:center;}
+  .about-mascot img{max-width:300px;margin:0 auto;}
+
+  .timeline{display:flex;flex-direction:column;gap:22px;}
+  .tl-item{display:grid;grid-template-columns:150px 1fr;gap:24px;align-items:start;}
+  .tl-date{font-family:var(--font-mono);color:var(--cyan);font-size:13px;padding-top:38px;}
+  .tl-body h3{font-size:19px;}
+  .tl-org{font-family:var(--font-mono);font-size:12.5px;color:var(--slate-dim);margin-top:6px;letter-spacing:.03em;}
+  .tl-desc{margin-top:12px;color:var(--slate);font-size:15px;}
+  .tl-bullets{margin-top:12px;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+  .tl-bullets li{color:var(--slate);font-size:14.5px;position:relative;text-align:justify;}
+  .tl-bullets li::before{content:'▸';position:absolute;left:-20px;color:var(--cyan);}
+  .edu-subjects{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .edu-subject-tag{font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);border:1px solid var(--navy-line);padding:3px 10px;}
+
+  .skills-card{margin-top:4px;}
+  .skills-columns{display:flex;flex-wrap:wrap;gap:32px 40px;}
+  .skill-col{flex:1 1 220px;}
+  .skills-col-label{
+    font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--slate-dim);margin-bottom:14px;
+  }
+  .skills-col-icons{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:170px;}
+  .skill-chip{position:relative;display:inline-flex;}
+  .skill-chip img{
+    display:block;height:68px;width:68px;object-fit:contain;border-radius:8px;
+    border:1px solid var(--navy-line);background:var(--navy);padding:10px;
+    transition:transform .2s, border-color .2s;
+  }
+  .skill-chip:hover img{transform:translateY(-3px);border-color:var(--cyan);}
+  .skill-tip{
+    position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
+    background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--white);
+    font-family:var(--font-mono);font-size:11px;white-space:nowrap;padding:5px 10px;
+    clip-path:var(--edge);opacity:0;pointer-events:none;transition:opacity .18s ease, transform .18s ease;
+    z-index:5;
+  }
+  .skill-tip::after{
+    content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+    border:5px solid transparent;border-top-color:var(--navy-line);
+  }
+  .skill-chip:hover .skill-tip{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  .skeleton{background:linear-gradient(90deg, var(--navy-mid) 25%, var(--navy-line) 50%, var(--navy-mid) 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;border:1px solid var(--navy-line);}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .skeleton-tl-item{height:110px;clip-path:var(--edge);}
+  .skeleton-skills-col{height:120px;clip-path:var(--edge);}
+  .skeleton-line{height:14px;margin-bottom:10px;clip-path:var(--edge);}
+  .skeleton-line.wide{width:100%;}
+  .skeleton-line.mid{width:70%;}
+
+  @media (max-width:900px){
+    .about-grid{grid-template-columns:1fr;}
+    .about-mascot{order:-1;}
+    .about-mascot img{max-width:200px;}
+    .tl-item{grid-template-columns:1fr;gap:8px;}
+    .tl-date{padding-top:0;}
+  }
+</style>
+</body>
+</html>
