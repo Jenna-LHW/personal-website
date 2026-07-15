@@ -132,9 +132,9 @@
     }).join('');
   }
 
-  /* ── Contact form: insert into Supabase `messages` table ────────
-     expected schema: messages(id uuid pk default gen_random_uuid(),
-       name text, email text, message text, created_at timestamptz default now())
+  /* ── Contact form: sends via Netlify function → Resend email ────
+     calls /.netlify/functions/send-email, which requires
+     { name, email, subject, message } in the POST body
   ─────────────────────────────────────────────────────────────── */
   const contactForm = document.getElementById('contact-form');
   const modal        = document.getElementById('form-modal');
@@ -171,15 +171,27 @@
     submitBtn.disabled = true;
     submitBtn.innerHTML = 'sending...';
 
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
     const payload = {
-      name: document.getElementById('name').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      message: document.getElementById('message').value.trim()
+      name,
+      email,
+      subject: `New message from ${name}`,
+      message
     };
 
     try {
-      const { error } = await db.from('messages').insert([payload]);
-      if (error) throw error;
+      const res = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Failed to send.');
+
       showFormModal(true);
       contactForm.reset();
     } catch (err) {
