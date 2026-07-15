@@ -55,7 +55,10 @@
       </div>
 
       <div class="hero-mascot reveal">
-        <img src="assets/glitch-mascot-1.png" alt="The Glitch, a friendly pixel-glitch mascot" class="mascot-float">
+        <a href="characters.html" class="glitch-secret-link" aria-label="Meet Glitch's friends">
+          <img src="assets/glitch-mascot-1.png" alt="The Glitch, a friendly pixel-glitch mascot" class="mascot-float">
+          <div class="glitch-secret-bubble">psst... want to meet my friends? <span class="arrow">→</span></div>
+        </a>
         <div class="mascot-tag">
           <span class="eyebrow" style="margin:0;">live status</span>
           <p>currently: your tour guide for this site</p>
@@ -106,6 +109,24 @@
   .prompt{color:var(--cyan);margin-right:2px;}
   .hero-mascot{position:relative;text-align:center;}
   .hero-mascot img{max-width:420px;margin:0 auto;}
+  .glitch-secret-link{position:relative;display:inline-block;text-decoration:none;}
+  .glitch-secret-link img{transition:filter .25s ease;}
+  .glitch-secret-link:hover img,
+  .glitch-secret-link:focus-visible img{filter:drop-shadow(0 0 20px rgba(76,230,255,.65));}
+  .glitch-secret-bubble{
+    position:absolute;top:6%;right:2%;transform:translateY(-8px) scale(.94);
+    font-family:var(--font-mono);font-size:12.5px;line-height:1.5;color:var(--white);
+    background:var(--navy-mid);border:1px solid var(--cyan);
+    padding:10px 14px;max-width:190px;clip-path:var(--edge);
+    box-shadow:0 8px 24px rgba(0,0,0,.4), var(--glow-cyan-soft);
+    opacity:0;pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .glitch-secret-bubble .arrow{color:var(--cyan);}
+  .glitch-secret-link:hover .glitch-secret-bubble,
+  .glitch-secret-link:focus-visible .glitch-secret-bubble{
+    opacity:1;transform:translateY(-18px) scale(1);pointer-events:auto;
+  }
   .mascot-tag{
     font-family:var(--font-mono);font-size:12px;color:var(--slate);
     border:1px solid var(--navy-line);background:var(--navy-mid);

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>~/secret/cast — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<main>
+  <section class="wrap secret-section">
+
+    <div class="access-terminal reveal">
+      <p class="access-line">&gt; locating hidden directory ...</p>
+      <p class="access-line">&gt; ~/jenna/.secret/cast <span class="ok">found</span></p>
+      <p class="access-line">&gt; authenticating visitor ... <span class="ok">access granted</span></p>
+      <p class="access-line dim">&gt; you weren't supposed to find this. nice work.</p>
+    </div>
+
+    <p class="eyebrow secret-eyebrow">classified · do not share this url</p>
+    <h1 class="hero-title secret-title">
+      <span class="glitch" data-text="THE CAST">THE CAST</span>
+    </h1>
+    <p class="secret-sub">Every project needs a few extra hands. These are mine — the little creatures that live in the code and refuse to leave. Hover over one, if you dare.</p>
+
+    <div class="char-grid" id="char-grid">
+      <div class="skeleton skeleton-char-card"></div>
+      <div class="skeleton skeleton-char-card"></div>
+    </div>
+
+    <a href="index.html" class="btn secret-back"><span class="prompt">$</span> cd .. <span class="arrow">→</span></a>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script src="assets/characters.js"></script>
+
+<style>
+  .secret-section{padding:70px 0 90px;position:relative;z-index:3;}
+
+  /* ---- terminal access sequence ---- */
+  .access-terminal{
+    font-family:var(--font-mono);font-size:13px;line-height:2;color:var(--slate);
+    background:var(--navy-deep);border:1px solid var(--navy-line);
+    padding:20px 24px;clip-path:var(--edge);margin-bottom:36px;max-width:560px;
+  }
+  .access-line{opacity:0;animation:accessIn .4s ease forwards;}
+  .access-line:nth-child(1){animation-delay:.1s;}
+  .access-line:nth-child(2){animation-delay:.6s;}
+  .access-line:nth-child(3){animation-delay:1.1s;}
+  .access-line:nth-child(4){animation-delay:1.7s;}
+  .access-line .ok{color:var(--cyan);text-shadow:var(--glow-cyan);}
+  .access-line.dim{color:var(--slate-dim);}
+  @keyframes accessIn{from{opacity:0;transform:translateY(3px);}to{opacity:1;transform:translateY(0);}}
+
+  .secret-eyebrow{color:#ff6ea8;}
+  .secret-eyebrow::before{background:#ff6ea8;box-shadow:0 0 10px rgba(255,110,168,.6);}
+  .secret-title{margin-top:8px;font-size:clamp(34px,5vw,54px);}
+  .secret-sub{margin-top:18px;max-width:560px;color:var(--slate);font-size:15.5px;}
+
+  /* ---- character grid ---- */
+  .char-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:32px;margin-top:48px;max-width:900px;}
+  .char-card{
+    position:relative;background:var(--navy-mid);border:1px solid var(--navy-line);
+    clip-path:var(--edge);padding:44px 38px;overflow:hidden;
+  }
+  .char-card::before{
+    content:'';position:absolute;inset:0;pointer-events:none;clip-path:var(--edge);
+    border:1px solid var(--char-accent,var(--cyan));opacity:.35;
+    transition:opacity .25s ease;
+  }
+  .char-card:hover::before{opacity:.9;}
+  .char-card:hover{transform:translateY(-4px);transition:transform .25s ease;}
+  .char-id{
+    font-family:var(--font-mono);font-size:12px;color:var(--slate-dim);
+    letter-spacing:.08em;margin-bottom:20px;
+  }
+  .char-avatar{
+    width:128px;height:128px;border-radius:50%;
+    background:var(--navy-deep);border:1px solid var(--char-accent,var(--cyan));
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    box-shadow:0 0 24px color-mix(in srgb, var(--char-accent,var(--cyan)) 45%, transparent);
+    margin-bottom:24px;
+  }
+  .char-avatar img{width:78%;height:auto;}
+  .char-avatar-fallback{font-family:var(--font-mono);font-size:38px;color:var(--char-accent,var(--cyan));}
+  .char-name{color:var(--char-accent,var(--cyan));font-size:26px;margin-bottom:8px;}
+  .char-tagline{font-family:var(--font-mono);font-size:13.5px;color:var(--slate-dim);margin-bottom:18px;letter-spacing:.02em;}
+  .char-bio{color:var(--slate);font-size:15.5px;line-height:1.7;}
+  .skeleton-char-card{height:340px;clip-path:var(--edge);}
+
+  .secret-back{margin-top:52px;display:inline-flex;}
+
+  @media (max-width:640px){
+    .secret-section{padding-top:120px;}
+    .char-grid{grid-template-columns:1fr;}
+  }
+</style>
+</body>
+</html>
