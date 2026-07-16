@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>~/secret/cast — The Glitch</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scanlines"></div>
+<div class="grain-vignette"></div>
+<div class="pixel-field"></div>
+
+<main>
+  <section class="wrap secret-section">
+
+    <div class="access-terminal reveal">
+      <div id="access-lines"></div>
+    </div>
+
+    <p class="eyebrow secret-eyebrow">classified · do not share this url</p>
+    <h1 class="hero-title secret-title">
+      <span class="glitch" data-text="THE CAST">THE CAST</span>
+    </h1>
+    <p class="secret-sub">Every project needs a few extra hands. These are mine — the little creatures that live in the code and refuse to leave. Pick one.</p>
+
+    <div class="cast-select" id="cast-select">
+      <div class="cast-roster" id="cast-roster">
+        <div class="skeleton skeleton-thumb"></div>
+        <div class="skeleton skeleton-thumb"></div>
+        <div class="skeleton skeleton-thumb"></div>
+        <div class="skeleton skeleton-thumb"></div>
+      </div>
+
+      <div class="cast-panel">
+        <div class="cast-panel-bar">
+          <span class="term-dot"></span>
+          <span class="term-dot"></span>
+          <span class="term-dot"></span>
+          <span class="cast-panel-bar-title" id="cast-panel-path">~/cast/loading...</span>
+        </div>
+        <div class="cast-panel-body" id="cast-panel-body">
+          <div class="skeleton skeleton-panel"></div>
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn secret-back"><span class="prompt">$</span> cd .. <span class="arrow">→</span></a>
+
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div class="footer-status">system status: online — last deploy today</div>
+    <div class="footer-social">
+      <a href="https://github.com/Jenna-LHW" target="_blank" rel="noopener noreferrer">github</a>
+      <a href="https://linkedin.com/in/staceyjennalhw" target="_blank" rel="noopener noreferrer">linkedin</a>
+      <a href="https://www.youtube.com/@JennaLHW" target="_blank" rel="noopener noreferrer">youtube</a>
+    </div>
+    <img src="assets/glitch-mascot-2.png" alt="" class="footer-mascot">
+  </div>
+  <div class="wrap" style="margin-top:18px;color:var(--slate-dim);font-family:var(--font-mono);font-size:11.5px;">
+    © 2026 Jenna. Built with glitches, on purpose.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/supabase-client.js"></script>
+<script src="assets/script.js"></script>
+<script>
+  /* ── Access terminal — slow typewriter sequence ──────────────── */
+  const ACCESS_LINES = [
+    { text: '> locating hidden directory ...' },
+    { text: '> ~/jenna/.secret/cast ', okSuffix: 'found' },
+    { text: '> authenticating visitor ... ', okSuffix: 'access granted' },
+    { text: "> you weren't supposed to find this. nice work.", dim: true }
+  ];
+
+  function typeAccessTerminal() {
+    const wrap = document.getElementById('access-lines');
+    let li = 0;
+
+    function typeLine() {
+      if (li >= ACCESS_LINES.length) return;
+      const cfg = ACCESS_LINES[li];
+      const full = cfg.text + (cfg.okSuffix || '');
+      const p = document.createElement('p');
+      p.className = 'access-line' + (cfg.dim ? ' dim' : '');
+      wrap.appendChild(p);
+
+      let ci = 0;
+      const speed = () => 42 + Math.random() * 34; // slow, deliberate
+
+      function step() {
+        if (ci <= full.length) {
+          const typed = full.slice(0, ci);
+          const okStart = cfg.okSuffix ? cfg.text.length : -1;
+          if (cfg.okSuffix && ci > okStart) {
+            p.innerHTML = cfg.text + '<span class="ok">' + typed.slice(okStart) + '</span><span class="term-caret">▍</span>';
+          } else {
+            p.innerHTML = typed + '<span class="term-caret">▍</span>';
+          }
+          ci++;
+          setTimeout(step, speed());
+        } else {
+          p.innerHTML = cfg.okSuffix
+            ? cfg.text + '<span class="ok">' + cfg.okSuffix + '</span>'
+            : full;
+          li++;
+          setTimeout(typeLine, 480); // pause before next line
+        }
+      }
+      step();
+    }
+
+    typeLine();
+  }
+
+  document.addEventListener('DOMContentLoaded', typeAccessTerminal);
+</script>
+<script src="assets/characters.js"></script>
+
+<style>
+  .secret-section{padding:70px 0 90px;position:relative;z-index:3;}
+
+  /* ---- terminal access sequence ---- */
+  .access-terminal{
+    font-family:var(--font-mono);font-size:13px;line-height:2;color:var(--slate);
+    background:var(--navy-deep);border:1px solid var(--navy-line);
+    padding:20px 24px;clip-path:var(--edge);margin-bottom:36px;max-width:560px;
+    min-height:108px;
+  }
+  .access-line .ok{color:var(--cyan);text-shadow:var(--glow-cyan);}
+  .access-line.dim{color:var(--slate-dim);}
+  .term-caret{color:var(--cyan);animation:blink 1s steps(1) infinite;}
+
+  .secret-eyebrow{color:#ff6ea8;}
+  .secret-eyebrow::before{background:#ff6ea8;box-shadow:0 0 10px rgba(255,110,168,.6);}
+  .secret-title{margin-top:8px;font-size:clamp(34px,5vw,54px);}
+  .secret-sub{margin-top:18px;max-width:560px;color:var(--slate);font-size:15.5px;}
+
+  /* ==========================================================
+     CAST SELECT — roster strip + terminal detail panel
+     ========================================================== */
+  .cast-select{margin-top:48px;max-width:900px;}
+
+  .cast-roster{
+    display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px;
+  }
+  .cast-thumb{
+    --char-accent:var(--cyan);
+    position:relative;width:74px;height:74px;padding:0;cursor:pointer;
+    background:var(--navy-mid);border:1px solid var(--navy-line);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;overflow:visible;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .cast-thumb:hover{transform:translateY(-3px);border-color:var(--char-accent);}
+  .cast-thumb.is-active{
+    border-color:var(--char-accent);
+    box-shadow:0 0 0 3px color-mix(in srgb, var(--char-accent) 30%, transparent),
+               0 0 18px color-mix(in srgb, var(--char-accent) 45%, transparent);
+  }
+  .cast-thumb.is-active::after{
+    content:'';position:absolute;inset:-6px;border-radius:50%;
+    border:1px solid var(--char-accent);opacity:.5;
+    animation:ping-pulse 1.8s ease-in-out infinite;
+  }
+  .cast-thumb-avatar{width:70%;height:70%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .cast-thumb-avatar img{width:100%;height:100%;object-fit:cover;}
+  .cast-thumb-fallback{font-family:var(--font-mono);font-size:20px;color:var(--char-accent);}
+
+  .cast-panel{
+    border:1px solid var(--navy-line);clip-path:var(--edge);overflow:hidden;
+    background:linear-gradient(180deg, rgba(18,26,66,.5), rgba(10,15,43,.4));
+  }
+  .cast-panel-bar{
+    display:flex;align-items:center;gap:8px;padding:12px 16px;
+    border-bottom:1px solid var(--navy-line);background:var(--navy-mid);
+  }
+  .cast-panel-bar-title{
+    margin-left:8px;font-family:var(--font-mono);font-size:11.5px;color:var(--slate-dim);letter-spacing:.03em;
+  }
+
+  .cast-panel-body{padding:36px 40px;position:relative;}
+  .cast-panel-body.is-swapping{animation:castSwap .35s ease;}
+  @keyframes castSwap{
+    0%{opacity:0;transform:translateX(8px) skewX(-2deg);filter:blur(2px);}
+    100%{opacity:1;transform:translateX(0) skewX(0);filter:blur(0);}
+  }
+
+  .cast-inner{display:flex;gap:30px;align-items:flex-start;}
+  .cast-avatar{
+    flex:none;width:110px;height:110px;border-radius:50%;
+    background:var(--navy-deep);border:1px solid var(--char-accent,var(--cyan));
+    display:flex;align-items:center;justify-content:center;overflow:hidden;
+    box-shadow:0 0 24px color-mix(in srgb, var(--char-accent,var(--cyan)) 45%, transparent);
+  }
+  .cast-avatar img{width:78%;height:auto;}
+  .cast-avatar-fallback{font-family:var(--font-mono);font-size:34px;color:var(--char-accent,var(--cyan));}
+
+  .cast-text{flex:1;min-width:0;}
+  .cast-id{font-family:var(--font-mono);font-size:11.5px;color:var(--slate-dim);letter-spacing:.08em;margin-bottom:10px;}
+  .cast-id b{color:var(--char-accent,var(--cyan));font-weight:600;}
+  .cast-name{font-size:26px;margin-bottom:6px;color:var(--char-accent,var(--cyan));}
+  .cast-tagline{font-family:var(--font-mono);font-size:13px;color:var(--slate-dim);margin-bottom:16px;letter-spacing:.02em;}
+  .cast-divider{height:1px;background:var(--navy-line);margin:16px 0;}
+  .cast-bio{color:var(--slate);font-size:15px;line-height:1.7;}
+
+  .skeleton{background:linear-gradient(90deg, var(--navy-mid) 25%, var(--navy-line) 50%, var(--navy-mid) 75%);
+    background-size:200% 100%;animation:shimmer 1.4s infinite;border:1px solid var(--navy-line);}
+  @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+  .skeleton-thumb{width:74px;height:74px;border-radius:50%;}
+  .skeleton-panel{height:200px;margin:36px 40px;clip-path:var(--edge);}
+
+  .secret-back{margin-top:52px;display:inline-flex;}
+
+  @media (max-width:640px){
+    .secret-section{padding-top:120px;}
+    .cast-panel-body{padding:28px 22px;}
+    .cast-inner{flex-direction:column;align-items:center;text-align:center;}
+  }
+</style>
+</body>
+</html>
