@@ -60,12 +60,16 @@
 
       <div class="reveal contact-side">
         <img src="assets/glitch-mascot-5.png" alt="The Glitch waving hello" class="mascot-float">
-        <div class="contact-links module">
-          <p class="eyebrow" style="margin-bottom:16px;">direct lines</p>
-          <div id="contact-links-list">
-            <div class="skeleton skeleton-line wide" style="height:20px;"></div>
-            <div class="skeleton skeleton-line wide" style="height:20px;margin-top:14px;"></div>
-            <div class="skeleton skeleton-line mid" style="height:20px;margin-top:14px;"></div>
+
+        <div class="contact-terminal">
+          <div class="term-bar">
+            <span class="term-bar-title">~/contact/links.sh</span>
+          </div>
+          <div class="term-body" id="contact-links-list">
+            <div class="term-line-skel skeleton"></div>
+            <div class="term-line-skel skeleton"></div>
+            <div class="term-line-skel skeleton"></div>
+            <div class="term-line-skel skeleton"></div>
           </div>
         </div>
       </div>
@@ -111,7 +115,31 @@
 <script>
   /* ── Contact links: loaded from `contact_links` table ────────────
      expected schema: contact_links(id, label, value, href, icon, sort_order)
+     `icon` is matched loosely against a small built-in icon set below —
+     store values like "email", "github", "linkedin", "youtube", "link".
+     Anything unrecognised falls back to a generic terminal glyph.
   ─────────────────────────────────────────────────────────────── */
+
+  const TERM_ICONS = {
+    email: '<svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>',
+    mail: '<svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>',
+    github: '<svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>',
+    linkedin: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="8" y1="10" x2="8" y2="17"/><circle cx="8" cy="6.5" r="1"/><path d="M12 17v-4.5a2 2 0 0 1 4 0V17"/></svg>',
+    youtube: '<svg viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="3"/><polygon points="10.5 9 15.5 12 10.5 15" fill="currentColor" stroke="none"/></svg>',
+    link: '<svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1.5 1.5"/><path d="M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1.5-1.5"/></svg>',
+    globe: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18z"/></svg>'
+  };
+
+  function termIcon(type, fallbackText) {
+    const key = (type || '').toLowerCase().trim();
+    if (TERM_ICONS[key]) return TERM_ICONS[key];
+    const guess = (fallbackText || '').toLowerCase();
+    for (const k of Object.keys(TERM_ICONS)) {
+      if (guess.includes(k)) return TERM_ICONS[k];
+    }
+    return TERM_ICONS.link;
+  }
+
   async function loadContactLinks() {
     const container = document.getElementById('contact-links-list');
     const { data, error } = await db
@@ -120,16 +148,44 @@
       .order('sort_order');
 
     if (error || !data?.length) {
-      container.innerHTML = `<p style="font-family:var(--font-mono);font-size:13px;color:var(--slate-dim);">Could not load contact links.</p>`;
+      container.innerHTML = `<p class="term-empty">could not load /contact/links.sh</p>`;
       return;
     }
 
-    container.innerHTML = data.map(item => {
-      const isLink = !!item.href;
-      return isLink
-        ? `<a href="${item.href}" class="contact-line" target="_blank" rel="noopener noreferrer">${item.value}</a>`
-        : `<div class="contact-line">${item.value}</div>`;
+    const rows = data.map(item => {
+      const iconSVG = termIcon(item.icon, item.label + ' ' + item.value);
+      const label = (item.label || 'link').toLowerCase();
+      const inner = `
+        <span class="term-prompt">$</span>
+        <span class="term-icon">${iconSVG}</span>
+        <span class="term-text">
+          <span class="term-cmd">open ${label}</span>
+          <span class="term-value">${item.value}</span>
+        </span>
+        <span class="term-go">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </span>`;
+
+      return item.href
+        ? `<a class="term-line" href="${item.href}" target="_blank" rel="noopener noreferrer">${inner}</a>`
+        : `<button class="term-line" type="button" data-copy="${item.value}">${inner}</button>`;
     }).join('');
+
+    container.innerHTML = rows
+
+    container.querySelectorAll('[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        navigator.clipboard?.writeText(btn.dataset.copy);
+        const goIcon = btn.querySelector('.term-go');
+        const original = goIcon.innerHTML;
+        goIcon.innerHTML = '<span class="term-copied">copied</span>';
+        btn.classList.add('is-copied');
+        setTimeout(() => {
+          goIcon.innerHTML = original;
+          btn.classList.remove('is-copied');
+        }, 1400);
+      });
+    });
   }
 
   /* ── Contact form: sends via Netlify function → Resend email ────
@@ -216,10 +272,75 @@
 
   .contact-side{text-align:center;}
   .contact-side img{max-width:280px;margin:0 auto 20px;}
-  .contact-links{text-align:left;}
-  .contact-line{display:block;padding:10px 0;border-bottom:1px solid var(--navy-line);font-family:var(--font-mono);font-size:13.5px;color:var(--slate);transition:color .2s;}
-  .contact-line:last-child{border-bottom:none;}
-  .contact-line:hover{color:var(--cyan);}
+
+  /* ---- terminal-styled contact links ---- */
+  .contact-terminal{
+    text-align:left;border:1px solid var(--navy-line);clip-path:var(--edge);
+    background:linear-gradient(180deg, rgba(18,26,66,.5), rgba(10,15,43,.4));
+    overflow:hidden;
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;padding:12px 16px;
+    border-bottom:1px solid var(--navy-line);background:var(--navy-mid);
+  }
+  .term-dot{width:8px;height:8px;border-radius:50%;background:var(--navy-line);}
+  .term-dot:nth-child(1){background:#ff6b7a;opacity:.7;}
+  .term-dot:nth-child(2){background:#ffd166;opacity:.7;}
+  .term-dot:nth-child(3){background:var(--cyan);opacity:.85;box-shadow:0 0 6px var(--cyan);}
+  .term-bar-title{
+    margin-left:8px;font-family:var(--font-mono);font-size:11.5px;color:var(--slate-dim);
+    letter-spacing:.03em;
+  }
+
+  .term-body{padding:6px 4px;}
+  .term-line{
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:13px 14px;background:none;border:none;border-bottom:1px solid var(--navy-line);
+    color:var(--white);text-align:left;cursor:pointer;font:inherit;
+    transition:background .2s ease, padding-left .2s ease;
+  }
+  .term-body a.term-line{cursor:alias;}
+  .term-line:last-of-type{border-bottom:none;}
+  .term-line:hover{background:rgba(76,230,255,.06);padding-left:19px;}
+
+  .term-prompt{
+    font-family:var(--font-mono);font-size:13px;color:var(--cyan);flex:none;
+  }
+  .term-icon{
+    flex:none;width:26px;height:26px;border-radius:6px;border:1px solid var(--navy-line);
+    display:flex;align-items:center;justify-content:center;background:var(--navy-deep);
+    transition:border-color .2s ease;
+  }
+  .term-icon svg{width:14px;height:14px;stroke:var(--slate);fill:none;stroke-width:1.8;}
+  .term-line:hover .term-icon{border-color:var(--cyan);}
+  .term-line:hover .term-icon svg{stroke:var(--cyan);}
+
+  .term-text{display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;}
+  .term-cmd{font-family:var(--font-mono);font-size:11px;color:var(--slate-dim);text-transform:lowercase;}
+  .term-value{
+    font-family:var(--font-mono);font-size:13.5px;color:var(--white);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  }
+  .term-line:hover .term-value{color:var(--cyan);}
+
+  .term-go{flex:none;width:20px;height:20px;display:flex;align-items:center;justify-content:center;}
+  .term-go svg{width:13px;height:13px;stroke:var(--slate-dim);fill:none;stroke-width:2;transition:transform .2s ease, stroke .2s ease;}
+  .term-line:hover .term-go svg{stroke:var(--cyan);transform:translate(2px,-2px);}
+  .term-copied{font-family:var(--font-mono);font-size:10px;color:var(--cyan);white-space:nowrap;}
+  .term-line.is-copied{background:rgba(76,230,255,.08);}
+
+  .term-cursor-line{
+    display:flex;align-items:center;gap:8px;padding:13px 14px 15px;
+    font-family:var(--font-mono);font-size:12.5px;color:var(--slate-dim);
+  }
+  .term-cursor-line .term-prompt{color:var(--slate-dim);}
+  .term-cursor-line .caret{color:var(--cyan);}
+
+  .term-empty{padding:16px 14px;font-family:var(--font-mono);font-size:12.5px;color:var(--slate-dim);}
+
+  .term-line-skel{
+    height:56px;margin:6px 10px;border-radius:4px;
+  }
 
   @media (max-width:900px){
     .contact-grid{grid-template-columns:1fr;}
